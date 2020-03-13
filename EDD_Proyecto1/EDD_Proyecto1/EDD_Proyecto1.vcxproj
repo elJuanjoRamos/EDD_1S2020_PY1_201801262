@@ -149,15 +149,23 @@
   <ItemGroup>
     <ClCompile Include="DictionaryNode.cpp" />
     <ClCompile Include="EDD_Proyecto1.cpp" />
+    <ClCompile Include="GameChipNode.cpp" />
     <ClCompile Include="LDC_DictionaryList.cpp" />
     <ClCompile Include="LS_ScoreBoardList.cpp" />
+    <ClCompile Include="Matrix.cpp" />
+    <ClCompile Include="MatrixNode.cpp" />
+    <ClCompile Include="Queue_GameChip.cpp" />
     <ClCompile Include="ScoreBoardNode.cpp" />
     <ClCompile Include="TreeNode.cpp" />
     <ClCompile Include="UsersBinaryTree.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DictionaryNode.h" />
+    <ClInclude Include="GameChipNode.h" />
     <ClInclude Include="LDC_DictionaryList.h" />
+    <ClInclude Include="Matrix.h" />
+    <ClInclude Include="MatrixNode.h" />
+    <ClInclude Include="Queue_GameChip.h" />
     <ClInclude Include="ScoreBoardList.h" />
     <ClInclude Include="ScoreBoardNode.h" />
     <ClInclude Include="TreeNode.h" />

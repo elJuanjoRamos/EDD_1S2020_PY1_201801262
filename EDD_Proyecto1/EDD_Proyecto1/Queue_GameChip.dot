@@ -1,0 +1,9 @@
+digraph G {rankdir=LR;node[shape = box];
+Nodo0 [label = "Letter:a\lPoints:0\lCant:5"];
+Nodo1 [label = "Letter:c\lPoints:50\lCant:8"];
+Nodo2 [label = "Letter:d\lPoints:9\lCant:6"];
+Nodo3 [label = "Letter:f\lPoints:3\lCant:100"];
+Nodo3->Nodo2;
+Nodo2->Nodo1;
+Nodo1->Nodo0;
+}

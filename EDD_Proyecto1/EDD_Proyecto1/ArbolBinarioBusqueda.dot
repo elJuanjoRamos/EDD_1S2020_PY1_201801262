@@ -4,7 +4,9 @@ nodo1[ label ="Mark\l4"];
 nodo4 [ label ="m1\l2"];
 nodo1->nodo4
 nodo2[ label ="wicho\l5"];
-nodo7 [ label ="eeee\l4"];
+nodo7[ label ="eeee\l4"];
+nodo8 [ label ="aaaa\l4"];
+nodo7->nodo8
 nodo2->nodo7
 nodo3[ label ="lalalalal\l9"];
 nodo5 [ label ="lalalal\l7"];

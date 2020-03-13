@@ -5,9 +5,9 @@ Nodo2 [label = "nodo1\l10"];
 Nodo3 [label = "nodo4\l50"];
 Nodo4 [label = "nodo4\l75"];
 Nodo5 [label = "nodo4\l100"];
-Nodo0->Nodo1;
-Nodo1->Nodo2;
-Nodo2->Nodo3;
-Nodo3->Nodo4;
-Nodo4->Nodo5;
+Nodo5->Nodo4;
+Nodo4->Nodo3;
+Nodo3->Nodo2;
+Nodo2->Nodo1;
+Nodo1->Nodo0;
 }

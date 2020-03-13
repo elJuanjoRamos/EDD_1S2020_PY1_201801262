@@ -1,0 +1,42 @@
+digraph G {rankdir = LR; 
+ node [shape=rectangle, splines="line", height=0.5, width=0.5]; 
+ graph[ nodesep = 0.5];
+Nodox3->Nodoy2[dir=both]
+Nodoy2 [label = "a"];
+Nodox6->Nodoy5[dir=both]
+Nodoy5 [label = "b"];
+Nodoy5->Nodoy15[dir=both];
+Nodoy15 [label = "u"];
+Nodox8->Nodoy7[dir=both]
+Nodoy7 [label = "h"];
+Nodoy7->Nodoy17[dir=both];
+Nodoy17 [label = "j"];
+Nodox10->Nodoy9[dir=both]
+Nodoy9 [label = "c"];
+Nodoy9->Nodoy19[dir=both];
+Nodoy19 [label = "k"];
+Nodox12->Nodoy11[dir=both]
+Nodoy11 [label = "e"];
+Nodox14->Nodoy13[dir=both]
+Nodoy13 [label = "i"];
+Nodoy4->Nodoy2[constraint=false, dir=both]
+Nodoy2 [label = "a"];
+Nodoy2->Nodoy5[constraint=false, dir=both];
+Nodoy5 [label = "b"];
+Nodoy5->Nodoy7[constraint=false, dir=both];
+Nodoy7 [label = "h"];
+Nodoy7->Nodoy9[constraint=false, dir=both];
+Nodoy9 [label = "c"];
+Nodoy9->Nodoy11[constraint=false, dir=both];
+Nodoy11 [label = "e"];
+Nodoy11->Nodoy13[constraint=false, dir=both];
+Nodoy13 [label = "i"];
+Nodoy16->Nodoy15[constraint=false, dir=both]
+Nodoy15 [label = "u"];
+Nodoy15->Nodoy19[constraint=false, dir=both];
+Nodoy19 [label = "k"];
+Nodoy18->Nodoy17[constraint=false, dir=both]
+Nodoy17 [label = "j"];
+
+{ rank = same; }Nodox3, Nodoy2Nodox6, Nodoy5, Nodoy15Nodox8, Nodoy7, Nodoy17Nodox10, Nodoy9, Nodoy19Nodox12, Nodoy11Nodox14, Nodoy13
+{ rank = same; }}

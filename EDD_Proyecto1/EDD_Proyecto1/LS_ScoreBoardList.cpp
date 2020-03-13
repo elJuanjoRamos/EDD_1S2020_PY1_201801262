@@ -35,8 +35,7 @@ void ScoreBoardList::Insert(int points, string username) {
     }
 }
 
-void ScoreBoardList::Print() {
-
+void ScoreBoardList::Print(string user) {
 	string archivoCabeza = "digraph G {rankdir=LR;"
 		"node[shape = box];\n";
 
@@ -51,16 +50,25 @@ void ScoreBoardList::Print() {
 
 	while (aux != NULL)
 	{
-		
-		nodos = nodos + "Nodo" + to_string(contador) + " [label = " + '"' + aux->username + string("\\l") + to_string(aux->points) + '"' + "];\n";
+		if (user != "")
+		{
+			if (aux->username == user)
+			{
+				nodos = nodos + "Nodo" + to_string(contador) + " [label = " + '"' + aux->username + string("\\l") + to_string(aux->points) + '"' + "];\n";
+				contador++;
+			}
+		}
+		else {
+			nodos = nodos + "Nodo" + to_string(contador) + " [label = " + '"' + aux->username + string("\\l") + to_string(aux->points) + '"' + "];\n";
+			contador++;
 
+		}
 		aux = aux->next;
-		contador++;
 	}
 
-	for (size_t i = 0; i < contador - 1; i++)
+	for (size_t i = contador - 1; i > 0; i--)
 	{
-		juntarNodos = juntarNodos + "Nodo" + to_string(i) + "->Nodo" + to_string(i + 1) + ";\n";
+		juntarNodos = juntarNodos + "Nodo" + to_string(i) + "->Nodo" + to_string(i - 1) + ";\n";
 	}
 
 	//std::cout << texto;
@@ -71,7 +79,5 @@ void ScoreBoardList::Print() {
 	ofs.close();
 	system("dot -Tjpg -o ScoreBoard.png ScoreBoard.dot");
 	system("ScoreBoard.png");
-
-
-
 }
+

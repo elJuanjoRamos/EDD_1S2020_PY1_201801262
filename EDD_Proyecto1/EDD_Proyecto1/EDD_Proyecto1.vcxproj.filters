@@ -13,47 +13,80 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Nodes">
+      <UniqueIdentifier>{3dd97282-5261-469b-ad41-fda93944e4c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Nodes H">
+      <UniqueIdentifier>{458e0fed-73fd-4db8-850d-834445e8e3f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Cpp Files">
+      <UniqueIdentifier>{be03c280-55f8-4533-8e45-db21c2cf3b89}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EDD_Proyecto1.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ScoreBoardNode.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="TreeNode.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="UsersBinaryTree.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="LS_ScoreBoardList.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Nodes</Filter>
     </ClCompile>
     <ClCompile Include="DictionaryNode.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="ScoreBoardNode.cpp">
+      <Filter>Nodes</Filter>
     </ClCompile>
     <ClCompile Include="LDC_DictionaryList.cpp">
+      <Filter>Cpp Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LS_ScoreBoardList.cpp">
+      <Filter>Cpp Files</Filter>
+    </ClCompile>
+    <ClCompile Include="UsersBinaryTree.cpp">
+      <Filter>Cpp Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameChipNode.cpp">
+      <Filter>Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="Queue_GameChip.cpp">
+      <Filter>Cpp Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MatrixNode.cpp">
+      <Filter>Cpp Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Matrix.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ScoreBoardNode.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="ScoreBoardList.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="TreeNode.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="UsersBinaryTree.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="DictionaryNode.h">
+    <ClInclude Include="LDC_DictionaryList.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="LDC_DictionaryList.h">
+    <ClInclude Include="DictionaryNode.h">
+      <Filter>Nodes H</Filter>
+    </ClInclude>
+    <ClInclude Include="TreeNode.h">
+      <Filter>Nodes H</Filter>
+    </ClInclude>
+    <ClInclude Include="ScoreBoardNode.h">
+      <Filter>Nodes H</Filter>
+    </ClInclude>
+    <ClInclude Include="GameChipNode.h">
+      <Filter>Nodes H</Filter>
+    </ClInclude>
+    <ClInclude Include="Queue_GameChip.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MatrixNode.h">
+      <Filter>Nodes H</Filter>
+    </ClInclude>
+    <ClInclude Include="Matrix.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
