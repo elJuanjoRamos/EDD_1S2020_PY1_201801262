@@ -18,15 +18,16 @@ using namespace std;
 int main()
 {
 
-    /*arbol.Insert("Mark");//4
-    arbol.Insert("wicho");//5
-    arbol.Insert("lalalalal");
-    arbol.Insert("m1");
-    arbol.Insert("lalalal");
-    arbol.Insert("lalalaldfds");
-    arbol.Insert("eeee");
-    arbol.Insert("aaaa");
-    arbol.Print();*/
+    arbol.Insert("becerro");//4
+    arbol.Insert("avion");//4
+    arbol.Insert("casa");//4
+    arbol.Insert("axyz");//4
+    arbol.Insert("espora");//4
+    arbol.Insert("francia");//4
+    arbol.Insert("durazno");//4
+
+
+    arbol.Print();
 
     /*listaOrdenada.Insert(10, "nodo1");
     listaOrdenada.Insert(5, "nodo2");
@@ -54,7 +55,7 @@ int main()
     
 
 
-    mat.InsertElement(1, 0, "a", false, false);
+    /*mat.InsertElement(1, 0, "a", false, false);
     mat.InsertElement(2, 0, "b", false, false);
     mat.InsertElement(8, 0, "h", false, false);
     mat.InsertElement(3, 0, "c", false, false);
@@ -66,7 +67,7 @@ int main()
     mat.InsertElement(3, 1, "k", false, false);
     
 
-    mat.Print();
+    mat.Print();*/
     /*mat.print_headers();
     mat.print_nodes_x();
 

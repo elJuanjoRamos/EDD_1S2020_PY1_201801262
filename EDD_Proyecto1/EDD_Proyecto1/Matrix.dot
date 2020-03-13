@@ -1,6 +1,23 @@
-digraph G {rankdir = LR; 
- node [shape=rectangle, splines="line", height=0.5, width=0.5]; 
+digraph G {rankdir = TB; 
+ node [shape=rectangle, height=0.5, width=0.5]; 
  graph[ nodesep = 0.5];
+Nodo0 [label="Y\X"];
+Nodox3 [label = "X=1"];
+Nodox3->Nodox6[constraint=false, dir=both];
+Nodox6 [label = "X=2"];
+Nodox6->Nodox8[constraint=false, dir=both];
+Nodox8 [label = "X=8"];
+Nodox8->Nodox10[constraint=false, dir=both];
+Nodox10 [label = "X=3"];
+Nodox10->Nodox12[constraint=false, dir=both];
+Nodox12 [label = "X=5"];
+Nodox12->Nodox14[constraint=false, dir=both];
+Nodox14 [label = "X=9"];
+Nodoy4 [label = "Y=0"];
+Nodoy4->Nodoy16[dir=both];
+Nodoy16 [label = "Y=1"];
+Nodoy16->Nodoy18[dir=both];
+Nodoy18 [label = "Y=3"];
 Nodox3->Nodoy2[dir=both]
 Nodoy2 [label = "a"];
 Nodox6->Nodoy5[dir=both]
@@ -37,6 +54,6 @@ Nodoy15->Nodoy19[constraint=false, dir=both];
 Nodoy19 [label = "k"];
 Nodoy18->Nodoy17[constraint=false, dir=both]
 Nodoy17 [label = "j"];
-
-{ rank = same; }Nodox3, Nodoy2Nodox6, Nodoy5, Nodoy15Nodox8, Nodoy7, Nodoy17Nodox10, Nodoy9, Nodoy19Nodox12, Nodoy11Nodox14, Nodoy13
-{ rank = same; }}
+Nodo0->Nodox3[constraint=false, dir=both];
+Nodo0->Nodoy4[dir=both];
+}
