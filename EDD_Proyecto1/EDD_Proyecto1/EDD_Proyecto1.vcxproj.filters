@@ -22,6 +22,9 @@
     <Filter Include="Cpp Files">
       <UniqueIdentifier>{be03c280-55f8-4533-8e45-db21c2cf3b89}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Controller">
+      <UniqueIdentifier>{13d7d0ca-85bd-4aa9-896a-54f6666b1064}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EDD_Proyecto1.cpp">
@@ -53,6 +56,21 @@
     </ClCompile>
     <ClCompile Include="MatrixNode.cpp">
       <Filter>Cpp Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Menu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="JSON.cpp">
+      <Filter>Cpp Files</Filter>
+    </ClCompile>
+    <ClCompile Include="StructureController.cpp">
+      <Filter>Controller</Filter>
+    </ClCompile>
+    <ClCompile Include="CasillaNode.cpp">
+      <Filter>Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="CasillaController.cpp">
+      <Filter>Controller</Filter>
     </ClCompile>
     <ClCompile Include="Matrix.cpp">
       <Filter>Source Files</Filter>
@@ -86,8 +104,31 @@
     <ClInclude Include="MatrixNode.h">
       <Filter>Nodes H</Filter>
     </ClInclude>
+    <ClInclude Include="Menu.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="JSON.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StructureController.h">
+      <Filter>Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="CasillaNode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CasillaController.h">
+      <Filter>Controller</Filter>
+    </ClInclude>
     <ClInclude Include="Matrix.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="EDD_Proyecto1.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>

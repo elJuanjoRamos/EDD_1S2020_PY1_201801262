@@ -1,17 +1,14 @@
 digraph G {rankdir=LR
 node[shape = box];
-Nodo0 [label = "lalalalal"];
-Nodo1 [label = "m1"];
-Nodo2 [label = "lalalal"];
-Nodo3 [label = "lalalaldfds"];
-Nodo4 [label = "eeee"];
+Nodo0 [label = "hola"];
+Nodo1 [label = "mundo"];
+Nodo2 [label = "proyecto"];
+Nodo3 [label = "diccionario"];
 Nodo0->Nodo1;
 Nodo1->Nodo0;
 Nodo1->Nodo2;
 Nodo2->Nodo1;
 Nodo2->Nodo3;
 Nodo3->Nodo2;
-Nodo3->Nodo4;
-Nodo4->Nodo3;
-Nodo0->Nodo4
-Nodo4->Nodo0}
+Nodo0->Nodo3
+Nodo3->Nodo0}

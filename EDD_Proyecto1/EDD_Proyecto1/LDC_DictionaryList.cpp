@@ -33,16 +33,17 @@ void LDC_DiccionaryList::Print() {
 
 	ofstream ofs("Dictionary_ListaDobleCircular.dot", ofstream::out);
 
-	DictionaryNode* aux = first->next;
+	DictionaryNode* aux = first;
 	string texto = "";
 	int contador = 0;
 
-	while (aux != first)
+	do
 	{
 		nodos = nodos + "Nodo" + to_string(contador) + " [label = " + '"' + aux->word + '"' + "];\n";
 		aux = aux->next;
 		contador++;
-	}
+	} while (aux != first);
+	
 
 	for (size_t i = 0; i < contador - 1; i++)
 	{

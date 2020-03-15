@@ -147,29 +147,43 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CasillaController.cpp" />
+    <ClCompile Include="CasillaNode.cpp" />
     <ClCompile Include="DictionaryNode.cpp" />
     <ClCompile Include="EDD_Proyecto1.cpp" />
     <ClCompile Include="GameChipNode.cpp" />
+    <ClCompile Include="JSON.cpp" />
     <ClCompile Include="LDC_DictionaryList.cpp" />
     <ClCompile Include="LS_ScoreBoardList.cpp" />
     <ClCompile Include="Matrix.cpp" />
     <ClCompile Include="MatrixNode.cpp" />
+    <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Queue_GameChip.cpp" />
     <ClCompile Include="ScoreBoardNode.cpp" />
+    <ClCompile Include="StructureController.cpp" />
     <ClCompile Include="TreeNode.cpp" />
     <ClCompile Include="UsersBinaryTree.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CasillaController.h" />
+    <ClInclude Include="CasillaNode.h" />
     <ClInclude Include="DictionaryNode.h" />
     <ClInclude Include="GameChipNode.h" />
+    <ClInclude Include="JSON.h" />
     <ClInclude Include="LDC_DictionaryList.h" />
     <ClInclude Include="Matrix.h" />
     <ClInclude Include="MatrixNode.h" />
+    <ClInclude Include="Menu.h" />
     <ClInclude Include="Queue_GameChip.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="ScoreBoardList.h" />
     <ClInclude Include="ScoreBoardNode.h" />
+    <ClInclude Include="StructureController.h" />
     <ClInclude Include="TreeNode.h" />
     <ClInclude Include="UsersBinaryTree.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="EDD_Proyecto1.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
