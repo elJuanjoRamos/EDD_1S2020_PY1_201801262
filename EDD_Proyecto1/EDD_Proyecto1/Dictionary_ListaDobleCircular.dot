@@ -4,11 +4,8 @@ Nodo0 [label = "hola"];
 Nodo1 [label = "mundo"];
 Nodo2 [label = "proyecto"];
 Nodo3 [label = "diccionario"];
-Nodo0->Nodo1;
-Nodo1->Nodo0;
-Nodo1->Nodo2;
-Nodo2->Nodo1;
-Nodo2->Nodo3;
-Nodo3->Nodo2;
-Nodo0->Nodo3
-Nodo3->Nodo0}
+Nodo0->Nodo1[dir=both];
+Nodo1->Nodo2[dir=both];
+Nodo2->Nodo3[dir=both];
+Nodo0->Nodo3[dir=both]
+}

@@ -15,6 +15,15 @@ void CasillaNode::setData(int x1, int y3, bool isd, bool ist) {
 bool CasillaNode::getData() {
 	return isEmpty;
 }
+bool CasillaNode::getDouble() {
+	return sdouble;
+}
+bool CasillaNode::getTriple() {
+	return striple;
+}
+bool CasillaNode::getEmpty() {
+	return isEmpty == true;
+}
 
 int CasillaNode::getX() {
 	return x;

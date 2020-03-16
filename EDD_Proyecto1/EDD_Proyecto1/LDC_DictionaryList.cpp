@@ -47,11 +47,11 @@ void LDC_DiccionaryList::Print() {
 
 	for (size_t i = 0; i < contador - 1; i++)
 	{
-		juntarNodos = juntarNodos + "Nodo" + to_string(i) + "->Nodo" + to_string(i + 1) + ";\nNodo" + to_string(i + 1) + "->Nodo" + to_string(i) + ";\n";
+		juntarNodos = juntarNodos + "Nodo" + to_string(i) + "->Nodo" + to_string(i + 1) + "[dir=both];\n" ;
 	}
 
 	//std::cout << texto;
-	texto = archivoCabeza + nodos + juntarNodos + "Nodo0->Nodo" + to_string(contador-1) + "\nNodo"+to_string(contador - 1)+"->Nodo0" + "}";
+	texto = archivoCabeza + nodos + juntarNodos + "Nodo0->Nodo" + to_string(contador-1) + "[dir=both]\n"+ "}";
 	//std::cout << texto;
 	ofs << texto;
 

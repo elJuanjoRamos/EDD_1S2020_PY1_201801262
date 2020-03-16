@@ -1,6 +1,7 @@
 #include "Matrix.h"
 #include <fstream>
 #include <iostream>
+#include "CasillaNode.h";
 
 
 void Matrix::InsertElement(int x, int y, string data, bool isDouble, bool isTriple) {
@@ -12,9 +13,10 @@ void Matrix::InsertElement(int x, int y, string data, bool isDouble, bool isTrip
 	{
 		column = this->CreateColumn(x);
 		row = this->CreateRow(y);
-		MatrixNode* new_node = new MatrixNode(data, x, y, isDouble, isTriple);
+		MatrixNode* new_node = new MatrixNode(data, x, y, false, false);
 		new_node = this->InsertColumn(new_node, column);
 		new_node = this->InsertRow(new_node, row);
+		new_node = this->getDoubleTriple(new_node);
 		return;
 	}
 	//*CASO 2: COLUMNA NO EXISTE, FILA EXISTE*/
@@ -25,6 +27,7 @@ void Matrix::InsertElement(int x, int y, string data, bool isDouble, bool isTrip
 		MatrixNode* new_node = new MatrixNode(data, x, y, isDouble, isTriple);
 		new_node = this->InsertColumn(new_node, column);
 		new_node = this->InsertRow(new_node, row);
+		new_node = this->getDoubleTriple(new_node);
 		return;
 	}
 	/*CASO 3: COLUMNA EXISTE, FILA NO EXISTE*/
@@ -34,6 +37,7 @@ void Matrix::InsertElement(int x, int y, string data, bool isDouble, bool isTrip
 		MatrixNode* new_node = new MatrixNode(data, x, y, isDouble, isTriple);
 		new_node = this->InsertColumn(new_node, column);
 		new_node = this->InsertRow(new_node, row);
+		new_node = this->getDoubleTriple(new_node);
 		return;
 	}
 	/*CASO 4: COLUMNA Y FILA EXISTEN*/
@@ -42,6 +46,7 @@ void Matrix::InsertElement(int x, int y, string data, bool isDouble, bool isTrip
 		MatrixNode* new_node = new MatrixNode(data, x, y, isDouble, isTriple);
 		new_node = this->InsertColumn(new_node, column);
 		new_node = this->InsertRow(new_node, row);
+		new_node = this->getDoubleTriple(new_node);
 		return;
 	}
 }
@@ -50,13 +55,7 @@ void Matrix::InsertElement(int x, int y, string data, bool isDouble, bool isTrip
 MatrixNode* Matrix::CreateColumn(int x) {
 	MatrixNode* nuevo = new MatrixNode("X=" + to_string(x), x, -1, false, false);
 	MatrixNode* temp = root;
-	/*lastRight->next = col;
-	col->next = NULL;
-	col->before = lastRight;
-	lastRight = col;*/
 
-
-	
 	if (x < root->x) {
 
 		nuevo->next = root;
@@ -119,13 +118,6 @@ MatrixNode* Matrix::CreateRow(int y) {
 		}
 	}
 
-	/*lastDown->down = col;
-	col->down = NULL;
-	col->up = lastDown;
-	lastDown = col;*/
-	
-
-
 	return nuevo;
 }
 
@@ -145,7 +137,6 @@ MatrixNode* Matrix::SearchColumn(int x) {
 	return NULL;
 }
 
-
 MatrixNode* Matrix::SearchRow(int y) {
 	MatrixNode* temp = root;
 	while (temp != NULL)
@@ -159,8 +150,6 @@ MatrixNode* Matrix::SearchRow(int y) {
 	}
 	return NULL;
 }
-
-
 
 MatrixNode* Matrix::InsertColumn(MatrixNode* new_node, MatrixNode* root) {
 	MatrixNode* reco = root;
@@ -184,31 +173,8 @@ MatrixNode* Matrix::InsertColumn(MatrixNode* new_node, MatrixNode* root) {
 		new_node->up = ant;
 		ant = new_node;
 	}
-	
-	/*while (new_node->x >= reco->x && reco->down != NULL) {
-	
-		ant = reco;
-		reco = reco->down;
-	
-	}
-	if (new_node->x >= reco->x) {
-		reco->down = new_node;
-		new_node->up = reco;
-		new_node->down = NULL;
-	}
-	else {
-		new_node->down = reco;
-		reco->up = new_node;
-		ant->down = new_node;
-		new_node->up = ant;
-	}*/
-
-
 	return new_node;
 }
-
-
-
 
 MatrixNode* Matrix::InsertRow(MatrixNode* new_node, MatrixNode* root) {
 	MatrixNode* reco = root;
@@ -230,30 +196,8 @@ MatrixNode* Matrix::InsertRow(MatrixNode* new_node, MatrixNode* root) {
 		new_node->before = ant;
 	}
 
-	/*while (new_node->y >= reco->y && reco->next != NULL) {
-		ant = reco;
-		reco = reco->next;
-	}
-	if (new_node->y >= reco->y) {
-		reco->next = new_node;
-		new_node->before = reco;
-	}
-	else {
-		new_node->next = reco;
-		reco->before = new_node;
-		ant->next = new_node;
-		new_node->before = ant;
-	}*/
 	return new_node;
 }
-
-
-
-
-void Matrix::print_headers() {
-
-}
-
 
 void Matrix::print_x_header(MatrixNode* cabezaY, int x) {
 	nodosy = nodosy + "Nodox" + to_string(x) + "->Nodoy" + to_string(cabezaY->index) + "[dir=both]\n";
@@ -283,6 +227,7 @@ void Matrix::print_x_header(MatrixNode* cabezaY, int x) {
 
 	}*/
 }
+
 void Matrix::print_y_header(MatrixNode* cabezaX, int index) {
 	nodos = nodos + "Nodoy" + to_string(index) + "->Nodoy" + to_string(cabezaX->index) + "[constraint=false, dir=both];\n";
 	while (cabezaX != NULL)
@@ -313,224 +258,29 @@ void Matrix::print_y_header(MatrixNode* cabezaX, int index) {
 	}*/
 
 }
-void Matrix::print_nodes_x() {
 
+MatrixNode* Matrix::getDoubleTriple(MatrixNode* node) {
+
+	if (casillaCont->getCasillaDoble(node->x, node->y))
+	{
+		node->isDouble = true;
+		node->isTriple = false;
+	}
+	else if(casillaCont->getCasillaTriple(node->x, node->y)) {
+		node->isTriple = true;
+		node->isDouble = false;
+	}
+	return node;
 }
-void Matrix::print_nodes_y() {
-
-}
-
 
 void Matrix::Print() {
 	ofstream ofs("Matrix.dot", ofstream::out);
 
-	/*
-	string archivoCabeza = "digraph G {rankdir = TB;\n node[shape = rectangle, height = 0.5, width = 0.5]; \ngraph[nodesep = 0.5]; ";
-
-	//nodos = "Nodo0 [label=\"Y\\X\"];\n";
-
-
-	MatrixNode* cabezaX = root->next;
-	MatrixNode* cabezaY = root->down;
-	MatrixNode* aux = root;
-
-	string juntarNodos = "Nodo0->Nodox" + to_string(root->next->index) + "[constraint=false, dir=both];\nNodo0->Nodoy" + to_string(root->down->index) + "[dir=both];\n";
-
-	string texto = "";
-	
-
-	string nodoTemp = "Nodo0 [label=\"Y\\X\"];\n";
-	string enlaceNodo = "";
-	string same = " {rank=same Nodo0 ";
-	string samey = " {rank=same ";
-
-
-
-
-	MatrixNode* auxtemp = aux->next;
-	//Cabezas X
-	while (auxtemp != NULL)
-	{
-		nodoTemp = nodoTemp + "Nodox" + to_string(auxtemp->index) + "[label = \"" + auxtemp->data + "\"]" + "\n";
-		if (auxtemp->next != NULL)
-		{
-			same = same + "Nodox" + to_string(auxtemp->index) + " ";
-		}
-		else {
-			same = same + "Nodox" + to_string(auxtemp->index);
-		}
-		auxtemp = auxtemp->next;
-	}
-	same = same + "}\n";
-	
-
-
-	MatrixNode* temp = root->down;
-	//Cabezas Y
-	
-	while (temp != NULL)
-	{
-		MatrixNode* auxtemp = temp;
-		while (auxtemp != NULL)
-		{
-			nodoTemp = nodoTemp + "Nodoy" + to_string(auxtemp->index) + "[label = \"" + auxtemp->data + "\"]" + "\n";
-			
-			if (auxtemp->next != NULL)
-			{
-				samey = samey + "Nodoy" + to_string(auxtemp->index) + " ";
-			}
-			else {
-				samey = samey + "Nodoy" + to_string(auxtemp->index);
-			}
-			auxtemp = auxtemp->next;
-		}
-		if (temp->down != NULL)
-		{
-			samey = samey + "}\n {rank=same ";
-		}
-		else {
-			samey = samey + "}\n";
-		}
-
-		temp = temp->down;
-	}
-
-	
-
-
-
-	
-	//ENLACES CABEZAS
-	while (cabezaX != NULL)
-	{
-		if (cabezaX->next != NULL)
-		{
-			juntarNodos = juntarNodos  +"Nodox" + to_string(cabezaX->index) + "->Nodox" + to_string(cabezaX->next->index) + "[constraint=false, dir=both];\n";
-
-		}
-		cabezaX = cabezaX->next;
-
-	}
-
-
-	//CABECERAS Y
-	while (cabezaY != NULL)
-	{
-		if (cabezaY->down != NULL)
-		{
-			juntarNodos = juntarNodos + + "Nodoy" + to_string(cabezaY->index) + "->Nodoy" + to_string(cabezaY->down->index) + "[dir=both];\n";
-		}
-		cabezaY = cabezaY->down;
-	}
-
-	MatrixNode* a = root->next;
-	while (a != NULL)
-	{
-		print_x_header(a->down, a->index);
-		a = a->next;
-	}
-
-	MatrixNode* b = root->down;
-	while (b != NULL)
-	{
-		print_y_header(b->next, b->index);
-		b = b->down;
-	}
-	
-	*/
-	
-	//CABECERAS X
-	/*while (cabezaX != NULL)
-	{
-		if (cabezaX->next != NULL)
-		{
-			nodos = nodos + "Nodox" + to_string(cabezaX->index) + " [label = " + '"' + "X=" + to_string(cabezaX->x) + '"' + "];\n" +
-				+"Nodox" + to_string(cabezaX->index) + "->Nodox" + to_string(cabezaX->next->index) + "[constraint=false, dir=both];\n";
-
-		}
-		else {
-			nodos = nodos + "Nodox" + to_string(cabezaX->index) + " [label = " + '"' + "X=" + to_string(cabezaX->x) + '"' + "];\n";
-		}
-		contador++;
-		cabezaX = cabezaX->next;
-
-	}*/
-	//CABECERAS Y
-	/*while (cabezaY != NULL)
-	{
-		if (cabezaY->down != NULL)
-		{
-			nodos = nodos + "Nodoy" + to_string(cabezaY->index) + " [label = " + '"' + "Y=" + to_string(cabezaY->y) + '"' + "];\n"
-				+ "Nodoy" + to_string(cabezaY->index) + "->Nodoy" + to_string(cabezaY->down->index) + "[dir=both];\n";
-		}
-		else
-		{
-			nodos = nodos + "Nodoy" + to_string(cabezaY->index) + " [label = " + '"' + "Y=" + to_string(cabezaY->y) + '"' + "];\n";
-		}
-		cabezaY = cabezaY->down;
-
-	}*/
-
-
-	//
-	/*MatrixNode* temp = root->next;
-	while (temp != NULL)
-	{
-		print_x_header(temp->down, temp->index);
-		temp = temp->next;
-	}
-	MatrixNode* temp1 = root->down;
-	while (temp1 != NULL)
-	{
-		print_y_header(temp1->next, temp1->index);
-		temp1 = temp1->down;
-	}*/
-
-	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 	//NUEVO CODIGO DE PRUEVA
 	string archivoCabeza = "digraph Sparce_Matrix { \n node [shape=box]\n";
-	archivoCabeza = archivoCabeza + "Mt[ label = \"Matrix\", width = 1.5, style = filled, fillcolor = firebrick1, group = 1 ];\n";
-	archivoCabeza = archivoCabeza + "e0[ shape = point, width = 0 ];\ne1[shape = point, width = 0];\n";
+	archivoCabeza = archivoCabeza + "\tMt[ label = \"Matrix\", width = 1.5, style = filled, fillcolor = firebrick1, group = 1 ];\n";
+	archivoCabeza = archivoCabeza + "\te0[ shape = point, width = 0 ];\ne1[shape = point, width = 0];\n";
 
 
 
@@ -580,17 +330,37 @@ void Matrix::Print() {
 	MatrixNode* temp = root->down;
 	string nodoTemp = "";
 	string samey = "{rank= same; ";
+	string doubleTriple = "";
 	while (temp != NULL)
 	{
 		MatrixNode* auxtemp = temp;
+
 		while (auxtemp != NULL)
 		{
+			
+			//INDICA SI LA CASILLA ES DOBLE O TRIPLE
+			if (auxtemp->isDouble)
+			{
+				doubleTriple = "\\n doble";
+			}
+			else if (auxtemp->isTriple)
+			{
+				doubleTriple = "\\n triple";
+			}
+			else {
+				doubleTriple = "";
+			}
+			//////
+
+
+
 			MatrixNode* padre = auxtemp;
 			do
 			{
 				padre = padre->up;
 			} while (padre->up != NULL);
-			nodoTemp = nodoTemp + "Nodoy" + to_string(auxtemp->index) + "[label = \"" + auxtemp->data + "\" width = 1.5, group = " + to_string(padre->index) + "];" + "\n";
+			
+			nodoTemp = nodoTemp + "Nodoy" + to_string(auxtemp->index) + "[label = \"" + auxtemp->data + doubleTriple + "\" width = 1.5, group = " + to_string(padre->index) + "];" + "\n";
 			
 			if (auxtemp->next != NULL)
 			{
@@ -629,7 +399,7 @@ void Matrix::Print() {
 	}
 
 	string texto = archivoCabeza + nodos + nodosy + enlacesx + enlacesy + samex  + nodoTemp + samey+  "}";
-	std::cout << texto;
+	//std::cout << texto;
 	
 	ofs << texto;
 

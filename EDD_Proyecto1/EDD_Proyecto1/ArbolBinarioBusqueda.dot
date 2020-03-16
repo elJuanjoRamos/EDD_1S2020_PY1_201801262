@@ -1,16 +1,22 @@
 digraph grafica{
 rankdir=TB;node [shape = record, style=filled, fillcolor=white];
-nodo1[ label ="becerro\l7"];
-nodo2[ label ="avion\l5"];
-nodo4 [ label ="axyz\l4"];
-nodo2->nodo4
-nodo1->nodo2
-nodo3[ label ="casa\l4"];
-nodo5[ label ="espora\l6"];
-nodo7 [ label ="durazno\l7"];
-nodo5->nodo7
-nodo6 [ label ="francia\l7"];
-nodo5->nodo6
-nodo3->nodo5
+nodo1[ label ="mario\l5"];
+nodo3[ label ="juan\l4"];
+nodo4[ label ="didier\l6"];
+nodo9 [ label ="andrea1\l7"];
+nodo4->nodo9
+nodo5[ label ="jacqueline\l10"];
+nodo8 [ label ="gerson\l6"];
+nodo5->nodo8
+nodo4->nodo5
+nodo3->nodo4
 nodo1->nodo3
+nodo2[ label ="pedro\l5"];
+nodo6[ label ="rene\l4"];
+nodo7 [ label ="rafa\l4"];
+nodo6->nodo7
+nodo10 [ label ="sandra\l6"];
+nodo6->nodo10
+nodo2->nodo6
+nodo1->nodo2
 }

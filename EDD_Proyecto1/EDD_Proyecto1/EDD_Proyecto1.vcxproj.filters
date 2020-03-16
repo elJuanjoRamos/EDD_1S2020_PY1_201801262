@@ -54,9 +54,6 @@
     <ClCompile Include="Queue_GameChip.cpp">
       <Filter>Cpp Files</Filter>
     </ClCompile>
-    <ClCompile Include="MatrixNode.cpp">
-      <Filter>Cpp Files</Filter>
-    </ClCompile>
     <ClCompile Include="Menu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -73,7 +70,10 @@
       <Filter>Controller</Filter>
     </ClCompile>
     <ClCompile Include="Matrix.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Cpp Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MatrixNode.cpp">
+      <Filter>Nodes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

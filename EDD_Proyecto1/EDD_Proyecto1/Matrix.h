@@ -1,4 +1,5 @@
 #include "MatrixNode.h";
+#include "CasillaController.h";
 class Matrix
 {
 public:
@@ -9,8 +10,11 @@ public:
     string nodosy;
     string enlacesx;
     string enlacesy;
+    CasillaController* casillaCont;
+
     Matrix() {
         root = new MatrixNode("Y/X", -1, -1, false, false);
+        casillaCont = CasillaController::getInstance();
         lastDown = lastRight = root;
     }
     MatrixNode* SearchRow(int y);
@@ -24,10 +28,9 @@ public:
 
 
     ///
-    void print_headers();
+    MatrixNode* getDoubleTriple(MatrixNode* x);
     void print_x_header(MatrixNode* x, int index);
     void print_y_header(MatrixNode* y, int index);
-    void print_nodes_x();
-    void print_nodes_y();
+    
 };
 

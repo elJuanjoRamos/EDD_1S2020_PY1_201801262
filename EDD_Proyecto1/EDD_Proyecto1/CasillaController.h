@@ -12,9 +12,12 @@ private:
 	CasillaNode doubleList[100];
 	CasillaNode tripleList[100];
 
+
 public:
 	static CasillaController* getInstance();
-	void Insert(int x, int y, bool d, bool t);
+	void Insert(int x, int y, bool d, bool t);	
 	void Show();
+	bool getCasillaDoble(int x, int y);
+	bool getCasillaTriple(int x, int y);
 };
 

@@ -1,72 +1,89 @@
 digraph Sparce_Matrix { 
  node [shape=box]
-Mt[ label = "Matrix", width = 1.5, style = filled, fillcolor = firebrick1, group = 1 ];
-e0[ shape = point, width = 0 ];
+	Mt[ label = "Matrix", width = 1.5, style = filled, fillcolor = firebrick1, group = 1 ];
+	e0[ shape = point, width = 0 ];
 e1[shape = point, width = 0];
+Nodox17 [label = "X=0" width = 1.5 style = filled, fillcolor = lightskyblue, group =17];
 Nodox2 [label = "X=1" width = 1.5 style = filled, fillcolor = lightskyblue, group =2];
-Nodox5 [label = "X=2" width = 1.5 style = filled, fillcolor = lightskyblue, group =5];
-Nodox9 [label = "X=3" width = 1.5 style = filled, fillcolor = lightskyblue, group =9];
-Nodox11 [label = "X=5" width = 1.5 style = filled, fillcolor = lightskyblue, group =11];
-Nodox7 [label = "X=8" width = 1.5 style = filled, fillcolor = lightskyblue, group =7];
-Nodox13 [label = "X=9"width = 1.5 style = filled, fillcolor = lightskyblue, group =13];
+Nodox11 [label = "X=3" width = 1.5 style = filled, fillcolor = lightskyblue, group =11];
+Nodox5 [label = "X=4" width = 1.5 style = filled, fillcolor = lightskyblue, group =5];
+Nodox13 [label = "X=5" width = 1.5 style = filled, fillcolor = lightskyblue, group =13];
+Nodox26 [label = "X=6" width = 1.5 style = filled, fillcolor = lightskyblue, group =26];
+Nodox20 [label = "X=8" width = 1.5 style = filled, fillcolor = lightskyblue, group =20];
+Nodox15 [label = "X=9" width = 1.5 style = filled, fillcolor = lightskyblue, group =15];
+Nodox8 [label = "X=10"width = 1.5 style = filled, fillcolor = lightskyblue, group =8];
 Nodoy3->Nodoy4[constraint=false, dir=both];
-Nodoy4->Nodoy6[constraint=false, dir=both];
-Nodoy6->Nodoy10[constraint=false, dir=both];
-Nodoy10->Nodoy12[constraint=false, dir=both];
-Nodoy12->Nodoy8[constraint=false, dir=both];
-Nodoy8->Nodoy14[constraint=false, dir=both];
-Nodoy15->Nodoy16[constraint=false, dir=both];
-Nodoy16->Nodoy19[constraint=false, dir=both];
-Nodoy20->Nodoy21[constraint=false, dir=both];
-Nodoy17->Nodoy18[constraint=false, dir=both];
-Nodoy22->Nodoy23[constraint=false, dir=both];
+Nodoy4->Nodoy12[constraint=false, dir=both];
+Nodoy12->Nodoy14[constraint=false, dir=both];
+Nodoy14->Nodoy16[constraint=false, dir=both];
+Nodoy6->Nodoy7[constraint=false, dir=both];
+Nodoy7->Nodoy27[constraint=false, dir=both];
+Nodoy18->Nodoy19[constraint=false, dir=both];
+Nodoy19->Nodoy23[constraint=false, dir=both];
+Nodoy21->Nodoy22[constraint=false, dir=both];
+Nodoy24->Nodoy25[constraint=false, dir=both];
+Nodoy28->Nodoy29[constraint=false, dir=both];
+Nodoy9->Nodoy10[constraint=false, dir=both];
 Nodoy3 [label = "Y=0" width = 1.5 style = filled, fillcolor = bisque1, group = 1  ];
-Nodoy15 [label = "Y=1" width = 1.5 style = filled, fillcolor = bisque1, group = 1  ];
-Nodoy20 [label = "Y=2" width = 1.5 style = filled, fillcolor = bisque1, group = 1  ];
-Nodoy17 [label = "Y=3" width = 1.5 style = filled, fillcolor = bisque1, group = 1  ];
-Nodoy22 [label = "Y=4"width = 1.5 style = filled, fillcolor = bisque1, group = 1  ];
+Nodoy6 [label = "Y=10" width = 1.5 style = filled, fillcolor = bisque1, group = 1  ];
+Nodoy18 [label = "Y=1" width = 1.5 style = filled, fillcolor = bisque1, group = 1  ];
+Nodoy21 [label = "Y=3" width = 1.5 style = filled, fillcolor = bisque1, group = 1  ];
+Nodoy24 [label = "Y=2" width = 1.5 style = filled, fillcolor = bisque1, group = 1  ];
+Nodoy28 [label = "Y=15" width = 1.5 style = filled, fillcolor = bisque1, group = 1  ];
+Nodoy9 [label = "Y=55"width = 1.5 style = filled, fillcolor = bisque1, group = 1  ];
+Nodox17->Nodoy19[dir=both]
+Nodoy19->Nodoy29[dir=both];
 Nodox2->Nodoy4[dir=both]
-Nodox5->Nodoy6[dir=both]
-Nodoy6->Nodoy16[dir=both];
-Nodox9->Nodoy10[dir=both]
-Nodoy10->Nodoy19[dir=both];
-Nodoy19->Nodoy23[dir=both];
 Nodox11->Nodoy12[dir=both]
-Nodoy12->Nodoy21[dir=both];
-Nodox7->Nodoy8[dir=both]
-Nodoy8->Nodoy18[dir=both];
+Nodoy12->Nodoy23[dir=both];
+Nodox5->Nodoy7[dir=both]
 Nodox13->Nodoy14[dir=both]
-Mt->Nodox2;
-Nodox2->Nodox5[dir=both];
-Nodox5->Nodox9[dir=both];
-Nodox9->Nodox11[dir=both];
-Nodox11->Nodox7[dir=both];
-Nodox7->Nodox13[dir=both];
+Nodoy14->Nodoy25[dir=both];
+Nodox26->Nodoy27[dir=both]
+Nodox20->Nodoy22[dir=both]
+Nodox15->Nodoy16[dir=both]
+Nodox8->Nodoy10[dir=both]
+Mt->Nodox17;
+Nodox17->Nodox2[dir=both];
+Nodox2->Nodox11[dir=both];
+Nodox11->Nodox5[dir=both];
+Nodox5->Nodox13[dir=both];
+Nodox13->Nodox26[dir=both];
+Nodox26->Nodox20[dir=both];
+Nodox20->Nodox15[dir=both];
+Nodox15->Nodox8[dir=both];
 Mt->Nodoy3[dir=both];
-Nodoy3->Nodoy15[dir=both];
-Nodoy15->Nodoy20[dir=both];
-Nodoy20->Nodoy17[dir=both];
-Nodoy17->Nodoy22[dir=both];
- { rank = same; Mt; Nodox2; Nodox5; Nodox9; Nodox11; Nodox7; Nodox13}
+Nodoy3->Nodoy6[dir=both];
+Nodoy6->Nodoy18[dir=both];
+Nodoy18->Nodoy21[dir=both];
+Nodoy21->Nodoy24[dir=both];
+Nodoy24->Nodoy28[dir=both];
+Nodoy28->Nodoy9[dir=both];
+ { rank = same; Mt; Nodox17; Nodox2; Nodox11; Nodox5; Nodox13; Nodox26; Nodox20; Nodox15; Nodox8}
 Nodoy3[label = "Y=0" width = 1.5, group = 1];
-Nodoy4[label = "a" width = 1.5, group = 2];
-Nodoy6[label = "b" width = 1.5, group = 5];
-Nodoy10[label = "c" width = 1.5, group = 9];
-Nodoy12[label = "e" width = 1.5, group = 11];
-Nodoy8[label = "h" width = 1.5, group = 7];
-Nodoy14[label = "i" width = 1.5, group = 13];
-Nodoy15[label = "Y=1" width = 1.5, group = 1];
-Nodoy16[label = "u" width = 1.5, group = 5];
-Nodoy19[label = "k" width = 1.5, group = 9];
-Nodoy20[label = "Y=2" width = 1.5, group = 1];
-Nodoy21[label = "t" width = 1.5, group = 11];
-Nodoy17[label = "Y=3" width = 1.5, group = 1];
-Nodoy18[label = "j" width = 1.5, group = 7];
-Nodoy22[label = "Y=4" width = 1.5, group = 1];
-Nodoy23[label = "p" width = 1.5, group = 9];
-{rank= same; Nodoy3; Nodoy4; Nodoy6; Nodoy10; Nodoy12; Nodoy8; Nodoy14}
- {rank=same; Nodoy15; Nodoy16; Nodoy19}
- {rank=same; Nodoy20; Nodoy21}
- {rank=same; Nodoy17; Nodoy18}
- {rank=same; Nodoy22; Nodoy23}
+Nodoy4[label = "a\n doble" width = 1.5, group = 2];
+Nodoy12[label = "c" width = 1.5, group = 11];
+Nodoy14[label = "e" width = 1.5, group = 13];
+Nodoy16[label = "i" width = 1.5, group = 15];
+Nodoy6[label = "Y=10" width = 1.5, group = 1];
+Nodoy7[label = "b\n doble" width = 1.5, group = 5];
+Nodoy27[label = "p\n triple" width = 1.5, group = 26];
+Nodoy18[label = "Y=1" width = 1.5, group = 1];
+Nodoy19[label = "u\n triple" width = 1.5, group = 17];
+Nodoy23[label = "k" width = 1.5, group = 11];
+Nodoy21[label = "Y=3" width = 1.5, group = 1];
+Nodoy22[label = "j" width = 1.5, group = 20];
+Nodoy24[label = "Y=2" width = 1.5, group = 1];
+Nodoy25[label = "t" width = 1.5, group = 13];
+Nodoy28[label = "Y=15" width = 1.5, group = 1];
+Nodoy29[label = "1\n triple" width = 1.5, group = 17];
+Nodoy9[label = "Y=55" width = 1.5, group = 1];
+Nodoy10[label = "h\n doble" width = 1.5, group = 8];
+{rank= same; Nodoy3;Nodoy4;Nodoy12;Nodoy14;Nodoy16}
+ {rank=same;Nodoy6;Nodoy7;Nodoy27}
+ {rank=same;Nodoy18;Nodoy19;Nodoy23}
+ {rank=same;Nodoy21;Nodoy22}
+ {rank=same;Nodoy24;Nodoy25}
+ {rank=same;Nodoy28;Nodoy29}
+ {rank=same;Nodoy9;Nodoy10}
 }

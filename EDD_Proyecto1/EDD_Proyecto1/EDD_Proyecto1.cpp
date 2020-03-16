@@ -5,16 +5,15 @@
 #include <fstream>      // std::ifstream
 #include <typeinfo>
 
-#include "Matrix.h";
+//#include "Matrix.h";
 #include "Menu.h";
 //#include "CasillaController.h";
-//#include "StructureController.h";
+#include "StructureController.h";
 #include "JSON.h";
 
 Menu menu;
-Matrix mat1;
-//StructureController* controller = StructureController::getInstance();
-//CasillaController* casillaController = CasillaController::getInstance();
+StructureController* controller = StructureController::getInstance();
+CasillaController* casillaController = CasillaController::getInstance();
 
 
 
@@ -25,14 +24,14 @@ string opc = "";
 
 
 void OpenFile();
-
+void Reports();
+void Players();
 
 using namespace std;
 int main()
 {
 
-
-	/*bool Salir = false;
+	bool Salir = false;
 	do {
 		if (opc == "")
 		{
@@ -56,13 +55,14 @@ int main()
             menu.Cls();
             OpenFile();
         }
-        //Jugar
+        //Jugadores
         else if (opcion == 2) {
-
+            Players();
         }
         //Reportes
         else if (opcion == 3) {
-
+            menu.Cls();
+            Reports();
         }
         //salir
         else if (opcion == 4) {
@@ -71,7 +71,7 @@ int main()
 
 		
 
-	} while (Salir == false);*/
+	} while (Salir == false);
 
 
     /*arbol.Insert("becerro");//4
@@ -111,20 +111,7 @@ int main()
     
 
 
-    mat1.InsertElement(1, 0, "a", false, false);
-    mat1.InsertElement(2, 0, "b", false, false);
-    mat1.InsertElement(8, 0, "h", false, false);
-    mat1.InsertElement(3, 0, "c", false, false);
-    mat1.InsertElement(5, 0, "e", false, false);
-    mat1.InsertElement(9, 0, "i", false, false);
-    
-    mat1.InsertElement(2, 1, "u", false, false);
-    mat1.InsertElement(8, 3, "j", false, false);
-    mat1.InsertElement(3, 1, "k", false, false);
-    mat1.InsertElement(5, 2, "t", false, false);
-    mat1.InsertElement(3, 4, "p", false, false);
-
-    mat1.Print();
+   
     /*mat.print_headers();
     mat.print_nodes_x();
 
@@ -163,25 +150,42 @@ void OpenFile() {
             i >> j3;
 
 
+
+            //INSERTA LA DIMENSION DEL TABLERO
+            controller->InsertBoardDimention(j3.at("dimension"));
+
             //INSERTA LAS PALABRAS AL DICCIONARIO
             for (int x = 0; x < j3.at("diccionario").size(); x++)
             {
-                cout << "Palabra: " << j3.at("diccionario")[x].at("palabra") << endl;
-                //controller->InsertDictionary(j3.at("diccionario")[x].at("palabra"));
+                controller->InsertDictionary(j3.at("diccionario")[x].at("palabra"));
             }
             
             //INSERTA LAS CASILLAS DOBLES EN UN ARREGLO TEMPORAL, ESE ARREGLO SIRVE AL MOMENTO DE INSERTAR EN LA MATRIZ, BUSCA EN EL ARREGLO LA POSICION 
             //X, Y Y SI EXISTE DEVUELVE SI ES DOBLE
             for (int i = 0; i < j3.at("casillas").at("dobles").size(); i++)
             {
-                //casillaController->Insert(j3.at("casillas").at("dobles")[i].at("x"), j3.at("casillas").at("dobles")[i].at("y"), true, false);
+                casillaController->Insert(j3.at("casillas").at("dobles")[i].at("x"), j3.at("casillas").at("dobles")[i].at("y"), true, false);
             }
             //INSERTA LAS CASILLAS DOBLES EN UN ARREGLO TEMPORAL, ESE ARREGLO SIRVE AL MOMENTO DE INSERTAR EN LA MATRIZ, BUSCA EN EL ARREGLO LA POSICION 
             //X, Y Y SI EXISTE DEVUELVE SI ES TRIPLE
             for (int i = 0; i < j3.at("casillas").at("triples").size(); i++)
             {
-                //casillaController->Insert(j3.at("casillas").at("triples")[i].at("x"), j3.at("casillas").at("triples")[i].at("y"), false, true);
+                casillaController->Insert(j3.at("casillas").at("triples")[i].at("x"), j3.at("casillas").at("triples")[i].at("y"), false, true);
             }
+
+
+            puts("");
+            puts("Archivo encontrado con exito!!");
+            puts("");
+            puts(".La dimension del tablero fue guardada con exito");
+            puts(".Las casillas doble y triples fueron guardadas con exito");
+            puts(".El diccionario fue guardado con exito");
+            puts("Puede ver las palabras del diccionario en la seccion de repores");
+            puts("");
+            puts("");
+            system("pause");
+            break;
+           
         }
         else {
 
@@ -198,5 +202,92 @@ void OpenFile() {
 
 
     } while (-1);
+
+}
+
+void Players() {
+    bool Salir = false;
+    menu.Cls();
+    puts("Menu Jugadores V1");
+    puts("-------------------");
+    puts("");
+
+    do
+    {
+        bool nombreValido = false;
+        string username;
+        do
+        {
+            cout << "Inserte el nombre de usuario:";
+            cin >> username;
+
+            nombreValido = controller->InsertUser(username);
+            if (!nombreValido)
+            {
+                cout << "El nombre de usuario ya fue agregado anteriormente\n";
+            }
+
+        } while (nombreValido == false);
+        
+
+        cout << "Desea agregar otro nombre?" << endl;
+        cout << "1. Si"<< endl;
+        cout << "2. No" << endl;
+        cout<< "Ingrese la opcion: ";
+        string opc = "";
+        cin >> opc;
+        if (atoi(opc.c_str()) == 2)
+        {
+            break;
+        }
+
+    } while (-1);
+}
+
+void Reports() {
+    bool Salir = false;
+    do {
+        if (opc == "")
+        {
+            menu.Cls();
+            puts("Menu Reportes V1");
+            puts("Ingrese el numero del reporte que desea ver");
+            puts("--------------------------------------------");
+            puts("1. Diccionario");
+            puts("2. Usuarios");
+
+            do
+            {
+                opc = "";
+                cout << "\n" << "\t\t\t" << "    Por favor, ingrese el valor: ";
+                cin >> opc;
+
+            } while (menu.IsNumber(opc) != true);
+        }
+
+        int opcion = atoi(opc.c_str());
+        opc = "";
+
+        //Print dictionary
+        if (opcion == 1)
+        {
+            controller->PrintDictionary();
+        }
+        //Jugadores
+        else if (opcion == 2) {
+            controller->PrintUsers();
+        }
+        //Reportes
+        else if (opcion == 3) {
+
+        }
+        //salir
+        else if (opcion == 4) {
+            Salir = true;
+        }
+
+
+
+    } while (Salir == false);
 
 }

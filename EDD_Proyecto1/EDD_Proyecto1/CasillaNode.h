@@ -15,6 +15,9 @@ public:
 	bool getData();
 	int getX();
 	int getY();
+	bool getDouble();
+	bool getTriple();
+	bool getEmpty();
 	void toString();
 };
 
