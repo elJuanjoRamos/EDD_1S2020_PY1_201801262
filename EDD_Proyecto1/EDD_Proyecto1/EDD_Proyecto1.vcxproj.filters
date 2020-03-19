@@ -75,6 +75,15 @@
     <ClCompile Include="MatrixNode.cpp">
       <Filter>Nodes</Filter>
     </ClCompile>
+    <ClCompile Include="Letter.cpp">
+      <Filter>Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="LetterPlayer.cpp">
+      <Filter>Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="LD_LetterPlayer.cpp">
+      <Filter>Cpp Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ScoreBoardList.h">
@@ -123,6 +132,15 @@
       <Filter>Controller</Filter>
     </ClInclude>
     <ClInclude Include="Matrix.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Letter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LetterPlayer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LD_LetterPlayer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

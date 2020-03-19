@@ -2,6 +2,10 @@
 
 int TreeNode::correlative = 1;
 
+TreeNode::TreeNode()
+{
+}
+
 TreeNode::TreeNode(int l, string n) {
 	this->lenght = l;
 	this->username = n;
@@ -42,11 +46,11 @@ string TreeNode::GetBody() {
 	string etiqueta;
 	if (left == NULL && right == NULL)
 	{
-		etiqueta = "nodo" + to_string(index) + " [ label =\"" + username + string("\\l") + to_string(lenght) + "\"];\n";
+		etiqueta = "nodo" + to_string(index) + " [ label =\"" + to_string(index) + " - " + username + string("\\l") + to_string(lenght) + "\"];\n";
 	}
 	else
 	{
-		etiqueta = "nodo" + to_string(index) + "[ label =\"" + username + "\\l" + to_string(lenght) + "\"];\n";
+		etiqueta = "nodo" + to_string(index) + "[ label =\"" + to_string(index) + " - " + username + "\\l" + to_string(lenght) + "\"];\n";
 	}
 	if (left != NULL)
 	{

@@ -39,5 +39,10 @@ public:
 	//Users
 	bool InsertUser(string u);
 	void PrintUsers();
+
+	//Matrix
+
+	void InsertMatrix(int x, int y, string letra, bool d, bool t);
+	void PrintMatrix();
 };
 

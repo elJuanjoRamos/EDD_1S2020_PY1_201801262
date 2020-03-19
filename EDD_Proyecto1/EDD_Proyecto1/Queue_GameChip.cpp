@@ -80,8 +80,12 @@ void Queue_GameChip::Print() {
 
 	while (aux != NULL)
 	{
-
-		nodos = nodos + "Nodo" + to_string(contador) + " [label = " + '"' +"Letter:"+ aux->letter + string("\\lPoints:") + to_string(aux->points) +string("\\lCant:") + to_string(aux->cant) + '"' + "];\n";
+		if (aux->letter == 'Ñ') {
+			nodos = nodos + "Nodo" + to_string(contador) + " [label = " + '"' + "Letter: Ñ" + string("\\lPoints:") + to_string(aux->points) + string("\\lCant:") + to_string(aux->cant) + '"' + "];\n";
+		}
+		else {
+			nodos = nodos + "Nodo" + to_string(contador) + " [label = " + '"' + "Letter:" + aux->letter + string("\\lPoints:") + to_string(aux->points) + string("\\lCant:") + to_string(aux->cant) + '"' + "];\n";
+		}
 
 		aux = aux->next;
 		contador++;

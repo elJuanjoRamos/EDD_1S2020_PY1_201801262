@@ -18,9 +18,10 @@ void Menu::getMenu() {
 	Menu::Print(28, 12, " ", 15);
 	Menu::Print(28, 13, "1. Lectura de Archivo", 15);
 	Menu::Print(28, 14, "2. Jugadores", 15);
-	Menu::Print(28, 15, "3. Reportes", 15);
-	Menu::Print(28, 16, "4. Salir", 15);
-	Menu::Print(28, 17, " ", 15);
+	Menu::Print(28, 15, "3. Iniciar Juego", 15);
+	Menu::Print(28, 16, "4. Reportes", 15);
+	Menu::Print(28, 17, "5. Salir", 15);
+	Menu::Print(28, 18, " ", 15);
 
 }
 

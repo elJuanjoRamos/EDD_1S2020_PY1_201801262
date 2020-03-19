@@ -154,6 +154,9 @@
     <ClCompile Include="GameChipNode.cpp" />
     <ClCompile Include="JSON.cpp" />
     <ClCompile Include="LDC_DictionaryList.cpp" />
+    <ClCompile Include="LD_LetterPlayer.cpp" />
+    <ClCompile Include="Letter.cpp" />
+    <ClCompile Include="LetterPlayer.cpp" />
     <ClCompile Include="LS_ScoreBoardList.cpp" />
     <ClCompile Include="Matrix.cpp" />
     <ClCompile Include="MatrixNode.cpp" />
@@ -171,6 +174,9 @@
     <ClInclude Include="GameChipNode.h" />
     <ClInclude Include="JSON.h" />
     <ClInclude Include="LDC_DictionaryList.h" />
+    <ClInclude Include="LD_LetterPlayer.h" />
+    <ClInclude Include="Letter.h" />
+    <ClInclude Include="LetterPlayer.h" />
     <ClInclude Include="Matrix.h" />
     <ClInclude Include="MatrixNode.h" />
     <ClInclude Include="Menu.h" />

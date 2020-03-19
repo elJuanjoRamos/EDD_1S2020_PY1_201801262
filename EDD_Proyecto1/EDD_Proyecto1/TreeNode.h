@@ -10,6 +10,7 @@ public:
 	string username;
 	TreeNode* left, * right;
 public:
+	TreeNode();
 	TreeNode(int l, string s);
 	int GetLenght();
 	void Print();

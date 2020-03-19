@@ -36,21 +36,25 @@ TreeNode* UsersBinaryTree::SearchUsername(TreeNode* raizSub, string buscado)
 		else
 			return SearchUsername(raizSub->right, buscado);
 	}
-		
-	
 }
-
 
 void UsersBinaryTree::Insert(string valor)
 {
 	root = Insert(root, valor);
+	size++;
+}
+
+int UsersBinaryTree::getSize()
+{
+	return size;
 }
 
 
 TreeNode* UsersBinaryTree::Insert(TreeNode* raizSub, string dato)
 {
-	if (raizSub == NULL)
+	if (raizSub == NULL) {
 		raizSub = new TreeNode(dato.length(), dato);
+	}
 	else {
 		
 		//Convierte el nombre de usuario a un arreglo de char
@@ -76,10 +80,8 @@ TreeNode* UsersBinaryTree::Insert(TreeNode* raizSub, string dato)
 			raizSub->right = dr;
 		}
 	}
-	return raizSub;
-
 	
-
+	return raizSub;
 }
 
 void UsersBinaryTree::InOrder(TreeNode* n)

@@ -38,6 +38,11 @@ void StructureController::InsertDouble(int x, int y, bool d, bool t) {
 // BOARD
 
 void StructureController::InsertBoardDimention(int d) {
+    /*for (size_t i = 1; i <= d; i++)
+    {
+        this->mat.CreateColumn(d);
+        this->mat.CreateRow(d);
+    }*/
     this->boardDimention = d;
 }
 bool StructureController::ValidateInsertInBoard(int x, int y) {
@@ -66,4 +71,13 @@ void StructureController::PrintUsers() {
     arbol.Print();
 }
 
+
+//Matrix 
+void StructureController::InsertMatrix(int x, int y, string letter, bool doubl, bool triple) {
+    mat.InsertElement(x, y, letter, doubl, triple);
+}
+
+void StructureController::PrintMatrix() {
+    mat.Print();
+}
 

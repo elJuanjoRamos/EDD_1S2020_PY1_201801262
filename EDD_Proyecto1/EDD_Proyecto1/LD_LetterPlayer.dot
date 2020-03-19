@@ -1,0 +1,24 @@
+digraph G {node[shape = box];
+Nodo0 [label = "C"];
+Nodo1 [label = "M"];
+Nodo2 [label = "N"];
+Nodo3 [label = "Q"];
+Nodo4 [label = "L"];
+Nodo5 [label = "O"];
+Nodo6 [label = "G"];
+Nodo7 [label = "H"];
+Nodo0->Nodo1;
+Nodo1->Nodo0;
+Nodo1->Nodo2;
+Nodo2->Nodo1;
+Nodo2->Nodo3;
+Nodo3->Nodo2;
+Nodo3->Nodo4;
+Nodo4->Nodo3;
+Nodo4->Nodo5;
+Nodo5->Nodo4;
+Nodo5->Nodo6;
+Nodo6->Nodo5;
+Nodo6->Nodo7;
+Nodo7->Nodo6;
+}
