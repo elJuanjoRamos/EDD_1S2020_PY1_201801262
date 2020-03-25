@@ -1,6 +1,6 @@
 #include "GameChipNode.h"
 
-GameChipNode::GameChipNode(char l, int p, int c)
+GameChipNode::GameChipNode(string l, int p, int c)
 {
 	letter = l;
 	points = p;

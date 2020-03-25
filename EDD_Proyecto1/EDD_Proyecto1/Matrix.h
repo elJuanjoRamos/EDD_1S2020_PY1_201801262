@@ -18,13 +18,15 @@ public:
         lastDown = lastRight = root;
     }
     MatrixNode* SearchRow(int y);
+    MatrixNode* SearchLetra(int x, int y);
     MatrixNode* SearchColumn(int x);
     MatrixNode* InsertColumn(MatrixNode* new_node, MatrixNode* head_column);
     MatrixNode* InsertRow(MatrixNode* new_node, MatrixNode* head_row);
     MatrixNode* CreateColumn(int y);
     MatrixNode* CreateRow(int x);
-    void InsertElement(int x, int y, string data, bool isDouble, bool isTriple);
+    void InsertElement(int x, int y, string data, int pts, bool isDouble, bool isTriple);
     void Print();
+    void Delete(int x, int y);
 
 
     ///

@@ -24,6 +24,31 @@ void LDC_DiccionaryList::Insert(string word) {
 	}
 }
 
+void LDC_DiccionaryList::Convert(string& s) {
+	for (int i = 0; i < s.length(); i++)
+	{
+		s[i] = towlower(s[i]);
+	}
+}
+
+DictionaryNode* LDC_DiccionaryList::search(string search) {
+	DictionaryNode* p;
+		p = last->next;
+		do {
+			string temp = p->word;
+			Convert(search);
+			Convert(temp);
+			if (temp == search)
+			{
+				return p;
+			}
+			else {
+				p = p->next;
+			}
+		} while (p != first);
+		return NULL;
+}
+
 void LDC_DiccionaryList::Print() {
 	string archivoCabeza = "digraph G {rankdir=LR\n"
 		"node[shape = box];\n";

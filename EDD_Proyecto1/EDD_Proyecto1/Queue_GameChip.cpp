@@ -9,7 +9,7 @@ Queue_GameChip::Queue_GameChip()
 }
 
 //INSERT METHOD
-void Queue_GameChip::Push(char l, int p, int c)
+void Queue_GameChip::Push(string l, int p, int c)
 {
 	GameChipNode* newNode = new GameChipNode(l,p,c);
 	if (IsEmpty())
@@ -80,7 +80,7 @@ void Queue_GameChip::Print() {
 
 	while (aux != NULL)
 	{
-		if (aux->letter == 'Ñ') {
+		if (aux->letter == "Ñ") {
 			nodos = nodos + "Nodo" + to_string(contador) + " [label = " + '"' + "Letter: Ñ" + string("\\lPoints:") + to_string(aux->points) + string("\\lCant:") + to_string(aux->cant) + '"' + "];\n";
 		}
 		else {

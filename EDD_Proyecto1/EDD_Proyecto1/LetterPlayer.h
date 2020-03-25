@@ -1,13 +1,22 @@
 #pragma once
+#include <string>
+
+using namespace std;
+
 class LetterPlayer
 {
 public:
-    char letter;
+    string letter;
+    int punteo;
+    int x;
+    int y;
     LetterPlayer* next;
     LetterPlayer* previous;
 
 public:
     LetterPlayer();
-    LetterPlayer(char c);
+    LetterPlayer(string c);
+    LetterPlayer(string c, int punteo);
+    LetterPlayer(string c, int punteo, int x, int y);
     virtual ~LetterPlayer();
 };

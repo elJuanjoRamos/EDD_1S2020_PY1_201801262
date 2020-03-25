@@ -3,27 +3,22 @@ digraph Sparce_Matrix {
 	Mt[ label = "Matrix", width = 1.5, style = filled, fillcolor = firebrick1, group = 1 ];
 	e0[ shape = point, width = 0 ];
 e1[shape = point, width = 0];
-Nodox2 [label = "X=5"width = 1.5 style = filled, fillcolor = lightskyblue, group =2];
-Nodoy3->Nodoy4[constraint=false, dir=both];
+Nodox2 [label = "X=0" width = 1.5 style = filled, fillcolor = lightskyblue, group =2];
 Nodox5 [label = "X=1" width = 1.5 style = filled, fillcolor = lightskyblue, group =5];
-Nodox2 [label = "X=5"width = 1.5 style = filled, fillcolor = lightskyblue, group =2];
-Nodoy6->Nodoy7[constraint=false, dir=both];
-Nodoy3->Nodoy4[constraint=false, dir=both];
-Nodoy3 [label = "Y=2"width = 1.5 style = filled, fillcolor = bisque1, group = 1  ];
-Nodox2->Nodoy4[dir=both]
-Nodoy6 [label = "Y=0" width = 1.5 style = filled, fillcolor = bisque1, group = 1  ];
-Nodoy3 [label = "Y=2"width = 1.5 style = filled, fillcolor = bisque1, group = 1  ];
-Nodox5->Nodoy7[dir=both]
-Nodox2->Nodoy4[dir=both]
-Mt->Nodox5;
-Nodox5->Nodox2[dir=both];
-Mt->Nodoy6[dir=both];
-Nodoy6->Nodoy3[dir=both];
- { rank = same; Mt; Nodox5; Nodox2}
-Nodoy6[label = "Y=0" width = 1.5, group = 1];
-Nodoy7[label = "C\n doble" width = 1.5, group = 5];
-Nodoy3[label = "Y=2" width = 1.5, group = 1];
-Nodoy4[label = "H" width = 1.5, group = 2];
-{rank= same; Nodoy6;Nodoy7}
- {rank=same;Nodoy3;Nodoy4}
+Nodox7 [label = "X=2"width = 1.5 style = filled, fillcolor = lightskyblue, group =7];
+Nodoy8->Nodoy9[constraint=false, dir=both];
+Nodoy3 [label = "Y=0" width = 1.5 style = filled, fillcolor = bisque1, group = 1  ];
+Nodoy8 [label = "Y=2"width = 1.5 style = filled, fillcolor = bisque1, group = 1  ];
+Nodox7->Nodoy9[dir=both]
+Mt->Nodox2;
+Nodox2->Nodox5[dir=both];
+Nodox5->Nodox7[dir=both];
+Mt->Nodoy3[dir=both];
+Nodoy3->Nodoy8[dir=both];
+ { rank = same; Mt; Nodox2; Nodox5; Nodox7}
+Nodoy3[label = "Y=0" width = 1.5, group = 1];
+Nodoy8[label = "Y=2" width = 1.5, group = 1];
+Nodoy9[label = "M" width = 1.5, group = 7];
+{rank= same; Nodoy3}
+ {rank=same;Nodoy8;Nodoy9}
 }

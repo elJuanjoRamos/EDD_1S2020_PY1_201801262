@@ -22,14 +22,17 @@ public:
 	Queue_GameChip queuegame;
 	Matrix mat;
 
+	//GameChip
+	void PushGameChip(string letter, int points, int quantity);
+	void PrintGameChips();
+	GameChipNode* PopChip();
 
 
-	//Methods
+	//DICTIONARY
 	void InsertDictionary(string text);
 	void PrintDictionary();
 	void InsertDouble(int x, int y, bool a, bool b);
-
-
+	DictionaryNode* SearchWord(string word);
 	//Board
 	void InsertBoardDimention(int d);
 	//verifica si la posicion xy este dentro del limite del tablero
@@ -42,7 +45,10 @@ public:
 
 	//Matrix
 
-	void InsertMatrix(int x, int y, string letra, bool d, bool t);
+	void InsertMatrix(int x, int y, string letra, int pts,  bool d, bool t);
 	void PrintMatrix();
+	void DeleteMatrixNode(int x, int y);
+	MatrixNode* SearchLetter(int x, int y);
+
 };
 

@@ -1,17 +1,16 @@
 #include "LD_LetterPlayer.h"
 #include <iostream>
 #include <fstream>
-using namespace std;
 
 LD_LetterPlayer::LD_LetterPlayer()
 {
 }
 
-void LD_LetterPlayer::Add(char c)
+void LD_LetterPlayer::Add(string c, int punteo)
 {
 	LetterPlayer* letterP;
 
-	letterP = new LetterPlayer(c);
+	letterP = new LetterPlayer(c, punteo);
 	if (first == NULL) {
 		first = letterP;
 		first->next = NULL;
@@ -26,7 +25,26 @@ void LD_LetterPlayer::Add(char c)
 	}
 }
 
-LetterPlayer* LD_LetterPlayer::Search(char search)
+void LD_LetterPlayer::Add(string c, int punteo, int x, int y)
+{
+	LetterPlayer* letterP;
+
+	letterP = new LetterPlayer(c, punteo, x, y);
+	if (first == NULL) {
+		first = letterP;
+		first->next = NULL;
+		first->previous = NULL;
+		last = first;
+	}
+	else {
+		last->next = letterP;
+		letterP->next = NULL;
+		letterP->previous = last;
+		last = letterP;
+	}
+}
+
+LetterPlayer* LD_LetterPlayer::Search(string search)
 {
 	LetterPlayer* actual = new LetterPlayer();
 	actual = first;
@@ -43,6 +61,23 @@ LetterPlayer* LD_LetterPlayer::Search(char search)
 void LD_LetterPlayer::Clean()
 {
 	first = NULL;
+}
+
+int LD_LetterPlayer::GetLenght() {
+	LetterPlayer* actual = first;
+	int i = 1;
+	if (first != NULL)
+	{
+		while (actual != NULL)
+		{
+			i++;
+			actual = actual->next;
+		}
+		return i;
+	}
+	else {
+		return 0;
+	}
 }
 
 void LD_LetterPlayer::Show()
@@ -64,7 +99,7 @@ void LD_LetterPlayer::Show()
 	}
 }
 
-char LD_LetterPlayer::Eliminar(char search) {
+void LD_LetterPlayer::Eliminar(string search) {
 	LetterPlayer* actual = new LetterPlayer();
 	actual = first;
 	LetterPlayer* anterior = new LetterPlayer();
@@ -94,7 +129,6 @@ char LD_LetterPlayer::Eliminar(char search) {
 			actual = actual->next;
 		}
 	}
-	return search;
 }
 
 void LD_LetterPlayer::Print() {
@@ -112,7 +146,7 @@ void LD_LetterPlayer::Print() {
 
 	while (aux != NULL)
 	{
-		if (aux->letter == 'Ñ') {
+		if (aux->letter == "Ñ") {
 			nodos = nodos + "Nodo" + to_string(contador) + " [label = " + '"' + "Ñ" + '"' + "];\n";
 		}
 		else {

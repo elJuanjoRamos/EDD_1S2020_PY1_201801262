@@ -29,11 +29,13 @@ void StructureController::PrintDictionary() {
     diccionario.Print();
 }
 
-
 void StructureController::InsertDouble(int x, int y, bool d, bool t) {
 
 }
 
+DictionaryNode* StructureController::SearchWord(string word) {
+    return diccionario.search(word);
+}
 
 // BOARD
 
@@ -73,11 +75,33 @@ void StructureController::PrintUsers() {
 
 
 //Matrix 
-void StructureController::InsertMatrix(int x, int y, string letter, bool doubl, bool triple) {
-    mat.InsertElement(x, y, letter, doubl, triple);
+void StructureController::InsertMatrix(int x, int y, string letter, int pts, bool doubl, bool triple) {
+    mat.InsertElement(x, y, letter, pts, doubl, triple);
 }
 
 void StructureController::PrintMatrix() {
     mat.Print();
+}
+void StructureController::DeleteMatrixNode(int x, int y) {
+    mat.Delete(x, y);
+}
+
+
+MatrixNode* StructureController::SearchLetter(int x, int y) {
+    return mat.SearchLetra(x, y);
+}
+
+//Game chip
+
+void StructureController::PushGameChip(string letter, int points, int quantity) {
+    queuegame.Push(letter, points, quantity);
+}
+
+void StructureController::PrintGameChips() {
+    queuegame.Print();
+}
+
+GameChipNode* StructureController::PopChip() {
+    return queuegame.Pop();
 }
 

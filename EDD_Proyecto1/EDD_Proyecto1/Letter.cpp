@@ -4,7 +4,7 @@ Letter::Letter()
 {
 }
 
-Letter::Letter(char l, int p, int c)
+Letter::Letter(string l, int p, int c)
 {
 	letter = l;
 	points = p;

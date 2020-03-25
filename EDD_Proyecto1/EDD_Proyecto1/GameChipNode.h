@@ -4,9 +4,9 @@ class GameChipNode
 {
 public:
 	GameChipNode* next;
-	char letter;
+	string letter;
 	int points;
 	int cant;
-	GameChipNode(char l, int p, int c);
+	GameChipNode(string l, int p, int c);
 };
 

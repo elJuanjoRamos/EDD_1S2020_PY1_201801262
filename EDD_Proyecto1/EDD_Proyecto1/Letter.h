@@ -1,12 +1,13 @@
 #pragma once
 #include <iostream>
+#include <string>
 using namespace std;
 class Letter
 {
 public:
-	char letter;
+	string letter;
 	int points;
 	int cant;
 	Letter();
-	Letter(char l, int p, int c);
+	Letter(string l, int p, int c);
 };
