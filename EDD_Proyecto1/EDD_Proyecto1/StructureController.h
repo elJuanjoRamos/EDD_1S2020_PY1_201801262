@@ -5,7 +5,8 @@
 #include "LDC_DictionaryList.h";
 #include "Queue_GameChip.h";
 #include "Matrix.h";
-
+#include "Letter.h";
+#include <time.h>
 class StructureController
 {
 private:
@@ -22,16 +23,19 @@ public:
 	Queue_GameChip queuegame;
 	Matrix mat;
 
+	//LETTERS
+	void RandomLetters();
+
+
 	//GameChip
 	void PushGameChip(string letter, int points, int quantity);
 	void PrintGameChips();
 	GameChipNode* PopChip();
-
+	bool QueueIsEmpty();
 
 	//DICTIONARY
 	void InsertDictionary(string text);
 	void PrintDictionary();
-	void InsertDouble(int x, int y, bool a, bool b);
 	DictionaryNode* SearchWord(string word);
 	//Board
 	void InsertBoardDimention(int d);
@@ -42,13 +46,18 @@ public:
 	//Users
 	bool InsertUser(string u);
 	void PrintUsers();
-
+	TreeNode* SearchUser(string u);
 	//Matrix
 
 	void InsertMatrix(int x, int y, string letra, int pts,  bool d, bool t);
 	void PrintMatrix();
 	void DeleteMatrixNode(int x, int y);
 	MatrixNode* SearchLetter(int x, int y);
+
+	//Score Board
+
+	void InsertScore(string name, int points);
+	void PrintScore(string user);
 
 };
 

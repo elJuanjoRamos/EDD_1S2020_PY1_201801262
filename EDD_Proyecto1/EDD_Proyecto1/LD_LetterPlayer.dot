@@ -1,11 +1,11 @@
 digraph G {node[shape = box];
-Nodo0 [label = "H"];
-Nodo1 [label = "O"];
-Nodo2 [label = "L"];
-Nodo3 [label = "A"];
-Nodo4 [label = "D"];
-Nodo5 [label = "A"];
-Nodo6 [label = "F"];
+Nodo0 [label = "D"];
+Nodo1 [label = "A"];
+Nodo2 [label = "F"];
+Nodo3 [label = "S"];
+Nodo4 [label = "B"];
+Nodo5 [label = "Z"];
+Nodo6 [label = "Y"];
 Nodo0->Nodo1;
 Nodo1->Nodo0;
 Nodo1->Nodo2;

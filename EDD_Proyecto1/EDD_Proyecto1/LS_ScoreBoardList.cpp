@@ -50,16 +50,16 @@ void ScoreBoardList::Print(string user) {
 
 	while (aux != NULL)
 	{
-		if (user != "")
+		if (user != "ALL")
 		{
 			if (aux->username == user)
 			{
-				nodos = nodos + "Nodo" + to_string(contador) + " [label = " + '"' + aux->username + string("\\l") + to_string(aux->points) + '"' + "];\n";
+				nodos = nodos + "Nodo" + to_string(contador) + " [label = " + '"' + " Jugador: " + aux->username + string("\\lPuntos: ") + to_string(aux->points) + '"' + "];\n";
 				contador++;
 			}
 		}
 		else {
-			nodos = nodos + "Nodo" + to_string(contador) + " [label = " + '"' + aux->username + string("\\l") + to_string(aux->points) + '"' + "];\n";
+			nodos = nodos + "Nodo" + to_string(contador) + " [label = " + '"' + "Jugador: " + aux->username + string("\\l") + to_string(aux->points) + '"' + "];\n";
 			contador++;
 
 		}
