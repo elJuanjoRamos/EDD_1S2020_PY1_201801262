@@ -16,5 +16,5 @@ public:
 	void Clean();
 	void Show();
 	void Eliminar(string search);
-	void Print();
+	void Print(string name);
 };

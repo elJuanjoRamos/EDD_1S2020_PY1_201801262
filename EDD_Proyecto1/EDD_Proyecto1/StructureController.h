@@ -45,7 +45,7 @@ public:
 
 	//Users
 	bool InsertUser(string u);
-	void PrintUsers();
+	void PrintUsers(string type);
 	TreeNode* SearchUser(string u);
 	//Matrix
 

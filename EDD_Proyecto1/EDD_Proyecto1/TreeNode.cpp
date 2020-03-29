@@ -32,15 +32,15 @@ void TreeNode::Print()
 	string texto = "";
 
 
-	texto = "digraph grafica{\n" + string("rankdir=TB;") +
-
-		"node [shape = record, style=filled, fillcolor=white];\n" + GetBody() + "}";
-
+	texto = "digraph grafica{\n" + string("rankdir=TB;") + "node [shape = record, style=filled, fillcolor=white];\n"+ GetBody() + "}";
+	
+	
 	ofs << texto;
 	ofs.close();
 	system("dot -Tjpg -o ArbolBinarioBusqueda.png ArbolBinarioBusqueda.dot");
 	system("ArbolBinarioBusqueda.png");
 }
+
 
 string TreeNode::GetBody() {
 	string etiqueta;

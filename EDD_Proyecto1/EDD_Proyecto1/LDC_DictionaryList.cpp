@@ -50,6 +50,7 @@ DictionaryNode* LDC_DiccionaryList::search(string search) {
 }
 
 void LDC_DiccionaryList::Print() {
+
 	string archivoCabeza = "digraph G {rankdir=LR\n"
 		"node[shape = box];\n";
 

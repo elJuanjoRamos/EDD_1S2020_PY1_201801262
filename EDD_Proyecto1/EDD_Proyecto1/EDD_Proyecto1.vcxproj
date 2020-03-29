@@ -158,6 +158,7 @@
     <ClCompile Include="Letter.cpp" />
     <ClCompile Include="LetterPlayer.cpp" />
     <ClCompile Include="LS_ScoreBoardList.cpp" />
+    <ClCompile Include="LS_TreeTour.cpp" />
     <ClCompile Include="Matrix.cpp" />
     <ClCompile Include="MatrixNode.cpp" />
     <ClCompile Include="Menu.cpp" />
@@ -177,6 +178,7 @@
     <ClInclude Include="LD_LetterPlayer.h" />
     <ClInclude Include="Letter.h" />
     <ClInclude Include="LetterPlayer.h" />
+    <ClInclude Include="LS_TreeTour.h" />
     <ClInclude Include="Matrix.h" />
     <ClInclude Include="MatrixNode.h" />
     <ClInclude Include="Menu.h" />

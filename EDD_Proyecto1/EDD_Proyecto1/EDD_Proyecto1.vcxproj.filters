@@ -84,6 +84,9 @@
     <ClCompile Include="LD_LetterPlayer.cpp">
       <Filter>Cpp Files</Filter>
     </ClCompile>
+    <ClCompile Include="LS_TreeTour.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ScoreBoardList.h">
@@ -141,6 +144,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="LD_LetterPlayer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LS_TreeTour.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

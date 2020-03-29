@@ -131,9 +131,9 @@ void LD_LetterPlayer::Eliminar(string search) {
 	}
 }
 
-void LD_LetterPlayer::Print() {
+void LD_LetterPlayer::Print(string name) { 
 	string archivoCabeza = "digraph G {"
-		"node[shape = box];\n";
+		"graph[label=\"" + name + "\", labelloc=t, fontsize=20]\nnode[shape = box];\n";
 
 	string nodos;
 	string juntarNodos;

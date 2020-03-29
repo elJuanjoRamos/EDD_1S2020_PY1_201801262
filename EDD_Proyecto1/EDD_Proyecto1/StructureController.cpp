@@ -55,9 +55,13 @@ bool StructureController::InsertUser(string user) {
     }
     return false;
 }
-void StructureController::PrintUsers() {
-    arbol.Print();
+void StructureController::PrintUsers(string type) {
+    arbol.Print(type);
 }
+
+
+
+
 TreeNode* StructureController::SearchUser(string u) {
     if (arbol.Search(u) != NULL)
     {

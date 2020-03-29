@@ -89,10 +89,24 @@ void UsersBinaryTree::InOrder(TreeNode* n)
 	if (n != NULL)
 	{
 		InOrder( n->left);
-
-		std::cout << n->username<< " " << n->lenght;
-		
+		inorden.Insert(n->index, n->username);
 		InOrder(n->right);
+	}
+}
+void UsersBinaryTree::PreOrder(TreeNode* n)
+{
+	if (n != NULL) {
+		preorden.Insert(n->index, n->username);
+		PreOrder(n->left);
+		PreOrder(n->right);
+	}
+}
+void UsersBinaryTree::PostOrder(TreeNode* n)
+{
+	if (n != NULL) {
+		PostOrder(n->left);
+		PostOrder(n->right);
+		posorden.Insert(n->index, n->username);
 	}
 }
 
@@ -102,9 +116,38 @@ TreeNode* UsersBinaryTree::GetRoot()
 }
 
 
-void UsersBinaryTree::Print()
+void UsersBinaryTree::Print(string type)
 {
-	root->Print();
+	if (type == "all")
+	{
+		root->Print();
+	}
+	else
+	{
+		TreeNode* temp = root;
+		if (type == "inorden")
+		{
+			InOrder(temp);
+			inorden.Print("InOrden: Iqz, Raiz, Der");
+			inorden.Clear();
+		}
+		else if (type == "preorden")
+		{
+			PreOrder(temp);
+			preorden.Print("PreOren: Raiz, Izq, Der");
+			preorden.Clear();
+		}
+		else if (type == "postorden")
+		{
+			PostOrder(temp);
+			posorden.Print("PosOrden: Izq, Der, Raiz");
+			posorden.Clear();
+		}
+		
+	}
+
+	
+
 }
 
 
