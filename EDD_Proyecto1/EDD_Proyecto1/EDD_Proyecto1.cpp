@@ -199,7 +199,8 @@ void OpenFile() {
         }
         
     } while (-1);
-
+    controller->PrintDictionary();
+    controller->ShowPrintDictionary();
 }
 
 void Players() {
@@ -272,7 +273,7 @@ void Reports() {
         //Print dictionary
         if (opcion == 1)
         {
-            controller->PrintDictionary();
+            controller->ShowPrintDictionary();
         }
         //Fichas
         if (opcion == 2)
@@ -785,106 +786,120 @@ void ValidateWord(string player) {
     cout << "|Buscando: " << palabra << endl;
     cout << "----------------------------------\n";
 
-    DictionaryNode* p = controller->SearchWord(palabra);
-    if (p != NULL) {
-        cout << "----------------------------------\n";
-        cout << "|        Palabra encontrada      |\n";
-        cout << "----------------------------------\n";
-        //SI ENCUENTRA LA PALABRA SE AGREGA NUEVOS ELEMENTOS A LA LISTA
-        //SE LE ASIGNAN NUEVOS VALORES A LA LISTA
-        int newLenght = 0;
-        if (player == "player1")
-        {
-            LDplayer1Temp.Clean();
-            newLenght = 7- LDplayer1.GetLenght();
+    bool llena = controller->DictionaryIsEmpty();
 
-        }
-        else
-        {
-            LDplayer2Temp.Clean();
-            newLenght = 7 - LDplayer2.GetLenght();
-        }
-        for (size_t i = 0; i < newLenght; i++)
-        {
-            if (!controller->QueueIsEmpty())
+    if (llena)
+    {
+        DictionaryNode* p = controller->SearchWord(palabra);
+        if (p != NULL) {
+            controller->DeleteDictionary(palabra);
+            cout << "----------------------------------\n";
+            cout << "|        Palabra encontrada      |\n";
+            cout << "----------------------------------\n";
+            //SI ENCUENTRA LA PALABRA SE AGREGA NUEVOS ELEMENTOS A LA LISTA
+            //SE LE ASIGNAN NUEVOS VALORES A LA LISTA
+            int newLenght = 0;
+            if (player == "player1")
             {
-                GameChipNode* let = controller->PopChip();
-                if (player == "player1")
+                LDplayer1Temp.Clean();
+                newLenght = 7 - LDplayer1.GetLenght();
+
+            }
+            else
+            {
+                LDplayer2Temp.Clean();
+                newLenght = 7 - LDplayer2.GetLenght();
+            }
+            for (size_t i = 0; i < newLenght; i++)
+            {
+                if (!controller->QueueIsEmpty())
                 {
-                    LDplayer1.Add(let->letter, let->points);
+                    GameChipNode* let = controller->PopChip();
+                    if (player == "player1")
+                    {
+                        LDplayer1.Add(let->letter, let->points);
+                    }
+                    else
+                    {
+                        LDplayer2.Add(let->letter, let->points);
+                    }
                 }
                 else
                 {
-                    LDplayer2.Add(let->letter, let->points);
+                    cout << "-----------------------" << endl;
+                    cout << "Lista de fichas vacia" << endl;
+                    cout << "-----------------------" << endl;
+                    break;
                 }
+                //LDplayer1Temp.Add(let->letter, let->points);
             }
-            else
-            {
-                cout << "-----------------------" << endl;
-                cout << "Lista de fichas vacia" << endl;
-                cout << "-----------------------" << endl;
-                break;
-            }
-            //LDplayer1Temp.Add(let->letter, let->points);
-        }
-        //LE SUMA AL PLAYER LOS PUNTOS OBTENIDOS
-        if (player == "player1")
-        {
-            pointPlayer1 = pointPlayer1 + pointsTemp;
-            turno = 1;
-        }
-        else
-        {
-            pointPlayer2 = pointPlayer2 + pointsTemp;
-            turno = 0;
-        }
-        cout << "Se ha sumado: " << pointsTemp << " pts a su punteo." << endl;
-        //LIMPIA LOS TEMPORALES
-        pointsTemp = 0;
-        system("pause");
-    }
-    else {
-        //LIMPIA LOS TEMPORALES
-        pointsTemp = 0;
-
-        cout << "-------------------------------------\n";
-        cout << "|        Palabra NO encontrada       |\n";
-        cout << "-------------------------------------\n";
-        cout << "Las fichas utilizadas se devolveran a su listado\n";
-
-
-        //REGRESA LAS PALABRAS A LA LISTA ORIGINAL DEL USUARIO
-        LD_LetterPlayer temp;
-
-        if (player == "player1")
-        {
-            temp = LDplayer1Temp;
-        }
-        else
-        {
-            temp = LDplayer2Temp;
-        }
-
-        while (temp.first != NULL)
-        {
-            controller->DeleteMatrixNode(temp.first->x, temp.first->y);
+            //LE SUMA AL PLAYER LOS PUNTOS OBTENIDOS
             if (player == "player1")
             {
-                LDplayer1.Add(temp.first->letter, temp.first->punteo);
+                pointPlayer1 = pointPlayer1 + pointsTemp;
+                turno = 1;
             }
             else
             {
-                LDplayer2.Add(temp.first->letter, temp.first->punteo);
+                pointPlayer2 = pointPlayer2 + pointsTemp;
+                turno = 0;
+            }
+            cout << "Se ha sumado: " << pointsTemp << " pts a su punteo." << endl;
+            //LIMPIA LOS TEMPORALES
+            pointsTemp = 0;
+            system("pause");
+        }
+        else {
+            //LIMPIA LOS TEMPORALES
+            pointsTemp = 0;
+
+            cout << "-------------------------------------\n";
+            cout << "|        Palabra NO encontrada       |\n";
+            cout << "-------------------------------------\n";
+            cout << "Las fichas utilizadas se devolveran a su listado\n";
+
+
+            //REGRESA LAS PALABRAS A LA LISTA ORIGINAL DEL USUARIO
+            LD_LetterPlayer temp;
+
+            if (player == "player1")
+            {
+                temp = LDplayer1Temp;
+            }
+            else
+            {
+                temp = LDplayer2Temp;
             }
 
-            temp.first = temp.first->next;
+            while (temp.first != NULL)
+            {
+                controller->DeleteMatrixNode(temp.first->x, temp.first->y);
+                if (player == "player1")
+                {
+                    LDplayer1.Add(temp.first->letter, temp.first->punteo);
+                }
+                else
+                {
+                    LDplayer2.Add(temp.first->letter, temp.first->punteo);
+                }
 
+                temp.first = temp.first->next;
+
+            }
+
+            system("pause");
         }
-        
-        system("pause");
-    }    
-    controller->PrintBoard(player1->username, player2->username, pointPlayer1, pointPlayer2);
-    Temp();
+        controller->PrintBoard(player1->username, player2->username, pointPlayer1, pointPlayer2);
+        Temp();
+
+
+    }
+    else
+    {
+        partida = false;
+        letras = false;
+        GiveUp("player1");
+    }
 
 }
 
@@ -892,14 +907,12 @@ void ValidateWord(string player) {
 void GiveUp(string player) {
 
 
+
+
     string winner = "";
     string loser = "";
     int pointsWinner = 0;
     int pointsLoser = 0;
-
-
-
-    
 
     //Si la lista no esta vacia 
     if (!controller->QueueIsEmpty())

@@ -21,6 +21,7 @@ public:
 	UsersBinaryTree arbol;
 	ScoreBoardList listaOrdenada;
 	LDC_DiccionaryList diccionario;
+	LDC_DiccionaryList diccionarioTemp;
 	Queue_GameChip queuegame;
 	Matrix mat;
 	LS_GameHistory history;
@@ -38,8 +39,11 @@ public:
 	//DICTIONARY
 	void InsertDictionary(string text);
 	void PrintDictionary();
-	DictionaryNode* SearchWord(string word);
+	void ShowPrintDictionary();
 	void ClearDictionary();
+	void DeleteDictionary(string w);
+	bool DictionaryIsEmpty();
+	DictionaryNode* SearchWord(string word);
 	//Board
 	void InsertBoardDimention(int d);
 	//verifica si la posicion xy este dentro del limite del tablero

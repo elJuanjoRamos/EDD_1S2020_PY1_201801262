@@ -25,8 +25,17 @@ void StructureController::InsertDictionary(string t) {
 void StructureController::PrintDictionary() {
     diccionario.Print();
 }
+void StructureController::ShowPrintDictionary() {
+    diccionario.ShowPrint();
+}
 void StructureController::ClearDictionary() {
     diccionario.first = diccionario.last = NULL;
+}
+void StructureController::DeleteDictionary(string w) {
+    diccionario.Delete(w);
+}
+bool StructureController::DictionaryIsEmpty() {
+    return diccionario.IsEmpty();
 }
 DictionaryNode* StructureController::SearchWord(string word) {
     return diccionario.search(word);

@@ -49,6 +49,46 @@ DictionaryNode* LDC_DiccionaryList::search(string search) {
 		return NULL;
 }
 
+void LDC_DiccionaryList::Delete(string word) {
+	DictionaryNode* actual = first;
+	DictionaryNode* ant = NULL;
+	if (!IsEmpty)
+	{
+		string temp = actual->word;
+		Convert(word);
+		Convert(temp);
+		do
+		{
+			if (temp == word)
+			{
+				if (actual == first)
+				{
+					first = first->next;
+					first->ant = last;
+					last->next = first;
+				}
+				else if (actual == last)
+				{
+					last = ant;
+					last->next = first;
+					first->ant = last;
+				}
+				else
+				{
+					ant->next = actual->next;
+					actual->next->ant = ant;
+				}
+			}
+			ant = actual;
+			actual = actual->next;
+
+		} while (actual != first);
+	}
+}
+
+bool LDC_DiccionaryList::IsEmpty() {
+	return first == NULL;
+}
 void LDC_DiccionaryList::Print() {
 
 	string archivoCabeza = "digraph G {rankdir=LR\n"
@@ -83,5 +123,8 @@ void LDC_DiccionaryList::Print() {
 
 	ofs.close();
 	system("dot -Tjpg -o Dictionary_ListaDobleCircular.png Dictionary_ListaDobleCircular.dot");
+}
+
+void LDC_DiccionaryList::ShowPrint() {
 	system("Dictionary_ListaDobleCircular.png");
 }
