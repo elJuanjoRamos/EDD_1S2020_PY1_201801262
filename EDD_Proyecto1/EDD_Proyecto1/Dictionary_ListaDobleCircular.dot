@@ -1,9 +1,9 @@
 digraph G {rankdir=LR
 node[shape = box];
-Nodo0 [label = "estructura"];
-Nodo1 [label = "datos"];
-Nodo2 [label = "proyecto"];
-Nodo3 [label = "hola"];
+Nodo0 [label = "hola"];
+Nodo1 [label = "mundo"];
+Nodo2 [label = "uno"];
+Nodo3 [label = "entrada"];
 Nodo0->Nodo1[dir=both];
 Nodo1->Nodo2[dir=both];
 Nodo2->Nodo3[dir=both];

@@ -27,8 +27,8 @@ public:
 
 	//LETTERS
 	void RandomLetters();
-
-
+	void PrintBoard(string player1, string player2, int p1, int p2);
+	void ShowBoard();
 	//GameChip
 	void PushGameChip(string letter, int points, int quantity);
 	void PrintGameChips();

@@ -131,7 +131,7 @@ void LD_LetterPlayer::Eliminar(string search) {
 	}
 }
 
-void LD_LetterPlayer::Print(string name) { 
+void LD_LetterPlayer::Print(string name, string number) { 
 	string archivoCabeza = "digraph G {"
 		"graph[label=\"" + name + "\", labelloc=t, fontsize=20]\nnode[shape = box];\n";
 
@@ -163,7 +163,13 @@ void LD_LetterPlayer::Print(string name) {
 	texto = archivoCabeza + nodos + juntarNodos + "}";
 	ofs << texto;
 
+	string command= "dot -Tjpg -o LD_LetterPlayer"+ number + ".png LD_LetterPlayer.dot";
+	
 	ofs.close();
-	system("dot -Tjpg -o LD_LetterPlayer.png LD_LetterPlayer.dot");
-	system("LD_LetterPlayer.png");
+	system(command.c_str());
+	
+}
+void LD_LetterPlayer::ShowPrint(string number) {
+	string pngName = "LD_LetterPlayer" + number + ".png";
+	system(pngName.c_str());
 }

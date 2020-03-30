@@ -1,4 +1,4 @@
 digraph G {graph[label="Historial de partidas", labelloc=t, fontsize=20]
 node[shape = box];
-nodo0 [ label ="Ganador: Juan - Puntos: 9\l Perdedor: Pedro - Puntos: 8"];
+nodo0 [ label ="Ganador: Pedro - Puntos: 9\l Perdedor: Juan - Puntos: 8"];
 }

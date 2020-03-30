@@ -348,6 +348,9 @@ void Matrix::Print() {
 	string archivoCabeza = "digraph Sparce_Matrix { \n node [shape=box]\n";
 	archivoCabeza = archivoCabeza + "\tMt[ label = \"Matrix\", width = 1.5, style = filled, fillcolor = firebrick1, group = 1 ];\n";
 	archivoCabeza = archivoCabeza + "\te0[ shape = point, width = 0 ];\ne1[shape = point, width = 0];\n";
+	string texto = "";
+	if (root->next != NULL && root->down != NULL)
+	{
 
 	MatrixNode* as = root;
 
@@ -388,10 +391,6 @@ void Matrix::Print() {
 		}
 		cabezaX = cabezaX->next;
 	}
-
-
-
-
 
 	//NODOS INTERNOS
 	MatrixNode* temp = root->down;
@@ -471,13 +470,21 @@ void Matrix::Print() {
 		b = b->down;
 	}
 
-	string texto = archivoCabeza + nodos + nodosy + enlacesx + enlacesy + samex + nodoTemp + samey + "}";
+	texto = archivoCabeza + nodos + nodosy + enlacesx + enlacesy + samex + nodoTemp + samey + "}";
+	archivoCabeza = nodos = nodosy = enlacesx = enlacesy = samex = nodoTemp = samey = "";
+
 	//std::cout << texto;
+	}
+	else
+	{
+		texto = archivoCabeza + "}";
+	}
 
 	ofs << texto;
 
 	ofs.close();
-	archivoCabeza = nodos = nodosy = enlacesx = enlacesy = samex = nodoTemp = samey = "";
 	system("dot -Tjpg -o Matrix.png Matrix.dot");
+}
+void Matrix::ShowPrint() {
 	system("Matrix.png");
 }

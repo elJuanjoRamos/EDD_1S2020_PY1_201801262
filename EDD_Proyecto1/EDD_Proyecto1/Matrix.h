@@ -26,6 +26,7 @@ public:
     MatrixNode* CreateRow(int x);
     void InsertElement(int x, int y, string data, int pts, bool isDouble, bool isTriple);
     void Print();
+    void ShowPrint();
     void Delete(int x, int y);
 
 

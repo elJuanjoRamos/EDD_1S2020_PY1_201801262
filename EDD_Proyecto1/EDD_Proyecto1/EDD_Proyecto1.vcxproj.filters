@@ -88,7 +88,7 @@
       <Filter>Cpp Files</Filter>
     </ClCompile>
     <ClCompile Include="LS_GameHistory.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Cpp Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

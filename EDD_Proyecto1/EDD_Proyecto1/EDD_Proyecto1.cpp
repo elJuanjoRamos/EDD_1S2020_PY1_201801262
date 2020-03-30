@@ -43,13 +43,13 @@ void OpenFile();
 void Reports();
 void Players();
 void PlayGame();
+void Temp();
 void ValidateWord(string player);
 void ValidateInsert(string name, string letter, int points);
 void GiveUp(string player);
 void ChangeChips(string player, string a);
 using namespace std;
 
-void Temp();
 
 int main()
 {
@@ -109,7 +109,7 @@ int main()
         }
         else if (opcion == 6)
         {
-            Temp();
+            
         }
 
 
@@ -118,6 +118,12 @@ int main()
 
 }
 
+
+void Temp() {
+    LDplayer1.Print("Fichas de " + player1->username, "1");
+    LDplayer2.Print("Fichas de " + player2->username, "2");
+    controller->PrintMatrix();
+}
 void OpenFile() {
     do
     {
@@ -254,7 +260,7 @@ void Reports() {
             do
             {
                 opc = "";
-                cout << "\n" << "\t\t\t" << "    Por favor, ingrese el valor: ";
+                cout <<"\nPor favor, ingrese el valor: ";
                 cin >> opc;
 
             } while (menu.IsNumber(opc) != true);
@@ -318,7 +324,7 @@ void Reports() {
         }
         else if (opcion == 5)
         {
-            controller->PrintMatrix();
+            controller->mat.ShowPrint();
         }
         //Historial de partidas
         else if (opcion == 6)
@@ -369,7 +375,6 @@ void PlayGame() {
     LDplayer2.Add("O", 1);
     LDplayer2.Add("A", 1);
     LDplayer2.Add("F", 4);
-
     /*for (size_t i = 0; i < 8; i++)
     {
         GameChipNode* let = controller->PopChip();
@@ -435,8 +440,12 @@ void PlayGame() {
                 cout << "Player 2:  " << player2->username << "\n";
                 LDplayer2.Show();
                 cout << "-----------------------" << "\n";
-
+                LDplayer1.Print("Fichas de " + player1->username, "1");
+                LDplayer2.Print("Fichas de " + player2->username, "2");
+                controller->PrintMatrix();
                 system("pause");
+                controller->PrintBoard(player1->username, player2->username, pointPlayer1, pointPlayer2);
+                controller->ShowBoard();
                 /*
                 ----------------------------------------------------------PARTIDA-------------------------------------------------
                 */
@@ -444,7 +453,7 @@ void PlayGame() {
                     if (turno == 0) {
 
                         string a = "Fichas de " + player1->username;
-                        LDplayer1.Print(a);
+                        LDplayer1.Print(a, "1");
                         menu.Cls();
 
                         cout << "-------------------------Turno-------------------------" << "\n";
@@ -537,7 +546,7 @@ void PlayGame() {
                     else if (turno == 1)
                     {
                         string a = "Fichas de " + player2->username;
-                        LDplayer2.Print(a);
+                        LDplayer2.Print(a, "2");
                         menu.Cls();
 
                         cout << "-------------------------Turno-------------------------" << "\n";
@@ -671,7 +680,6 @@ void ValidateInsert(string name, string letter, int points) {
         }
     } while ((!(controller->ValidateInsertInBoard(x, y))) || (controller->SearchLetter(x, y) != NULL));
     controller->InsertMatrix(x, y, letter, points, false, false);
-
     if (name == "player1")
     {
         //VALIDACION DE POSICION, EL BUCLE SE REPITE SI LA POSICION XY NO ES VALDIA
@@ -689,14 +697,14 @@ void ValidateInsert(string name, string letter, int points) {
         LDplayer2Temp.Add(letter, points, x, y);
 
     }
+    Temp();
 }
 
 //VALIDAR LA PALABRA BUSCADA
 void ValidateWord(string player) {
 
     /*----------------------------VALIDACION PALABRA----------------------------*/
-
-    controller->PrintMatrix();
+   
     //VALIDAR POSICION DE PALABRA
     string orientacion;
     int pointsTemp = 0;
@@ -872,8 +880,11 @@ void ValidateWord(string player) {
             temp.first = temp.first->next;
 
         }
+        
         system("pause");
-    }
+    }    
+    controller->PrintBoard(player1->username, player2->username, pointPlayer1, pointPlayer2);
+    Temp();
 
 }
 
@@ -1018,9 +1029,18 @@ void GiveUp(string player) {
 void ChangeChips(string player, string a) {
 
     bool endReplace = true;
+    if (controller->QueueIsEmpty())
+    {
+        cout << "----------------------------\n";
+        cout << "|        Lista Vacia       |\n";
+        cout << "---------------------------\n";
+        cout << "No se puede reemplazar\n";
 
-    //Crea un bucle por si desea seguir reemplazando
-    while (endReplace)
+    }
+    else
+    {
+        //Crea un bucle por si desea seguir reemplazando
+        while (endReplace)
     {
 
         LetterPlayer* letterPlayerPoint = NULL;
@@ -1070,14 +1090,14 @@ void ChangeChips(string player, string a) {
                 LDplayer1.Eliminar(letra);
                 LDplayer1.Add(let->letter, let->points);
                 LDplayer1Temp.Add(let->letter, let->points);
-                LDplayer1.Print("Nuevas " + a);
+                LDplayer1.Print("Nuevas " + a, "1");
             }
             else
             {
                 LDplayer2.Eliminar(letra);
                 LDplayer2.Add(let->letter, let->points);
                 LDplayer2Temp.Add(let->letter, let->points);
-                LDplayer2.Print("Nuevas " + a);
+                LDplayer2.Print("Nuevas " + a, "2");
             }
         }
         else
@@ -1098,27 +1118,8 @@ void ChangeChips(string player, string a) {
             endReplace = false;
         }
     }
+    }
+
+
 }
 
-void Temp() {
-    menu.Cls();
-    cout << "archivo html";
-
-    string head = "<!DOCTYPE html>\n<html>\n<body>\n";
-      
-    string body = "<h1>My First Heading</h1>";
-
-    string footer = "\n</body>\n</html> ";
-    ofstream ofs("Juego.html", ofstream::out);
-
-    
-    string texto = "";
-   
-    //std::cout << texto;
-    texto = head + body +footer;
-    //std::cout << texto;
-    ofs << texto;
-
-    ofs.close();
-    system("Juego.html");
-}

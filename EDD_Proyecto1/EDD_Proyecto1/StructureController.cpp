@@ -231,8 +231,89 @@ void StructureController::RandomLetters() {
 
     } while (Salir == false);
 
+}
 
-   
+
+void StructureController::PrintBoard(string player1, string player2, int p1, int p2) {
+
+    string head = string() + "<!DOCTYPE html>\n" +
+        "<html>\n" +
+        "<head>\n" +
+        "    <meta charset='utf-8' http-equiv=\"refresh\" content=\"1\" >\n" +
+        "    <meta http-equiv='X-UA-Compatible' content='IE=edge'>\n" +
+        "    <title> Repote Scrabble" + "</title>\n" +
+        "    <meta name='viewport' content='width=device-width, initial-scale=1'>\n" +
+        "    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>\n" +
+        "    <script src='main.js'></script>\n" +
+        "    <link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css\">\n" +
+        "    <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css\">\n" +
+        "</head>" +
+        "<body>\n" +
+        "  <nav class=\"navbar navbar-light bg-light\">\n" +
+        "    <span class=\"navbar-brand mb-0 h1\">Estructura de Datos</span>\n" +
+        "  </nav>";
 
 
+    string cadena2 = string() + "          <th scope=\"col\">Jugador 1</th>\n" +
+        "          <th scope=\"col\">Tablero</th>\n" +
+        "          <th scope=\"col\">Jugador 2</th>\n";
+
+    string body1 = string() +
+        "<div class=\"container\">\n" +
+        "    <div class=\"jumbotron jumbotron-fluid\">\n" +
+        "      <div class=\"container\">\n" +
+        "        <h1 class=\"display-4\"> Juego Scrabble" + "</h1>\n" +
+        "      </div>\n" +
+        "    </div>\n" +
+        "</div>\n";
+
+    string pl1 = "Nombre: " + player1 + "<br>Puntos: " + to_string(p1);
+    string pl2 = "Nombre: " + player2 + "<br>Puntos: " + to_string(p2);
+
+    string contenido1 = string() +
+
+        "<table id=\"data\"  cellspacing=\"0\" style=\"width: 100 %\" class=\"table table-striped table-bordered table-sm\">\n" +
+        "<colgroup>\n" +
+        "<col span = \"1\" style = \"width: 15%; \">\n" +
+        "<col span = \"1\" style = \"width: 70%; \">\n" +
+        "<col span = \"1\" style = \"width: 15%; \">\n" +
+        "</colgroup>\n" +
+        "      <thead class=\"thead-dark\">\n" +
+        "        <tr>\n" +
+        
+        cadena2 +
+        "        </tr>\n" +
+        "      </thead>" +
+        "<tbody>"
+        "<tr>\n" +
+        "     <td >" + pl1 + "</td>\n" +
+        "     <td>" + "</td>\n" +
+        "     <td>" + pl2 + "</td>\n" +
+        "</tr>";
+    string contenido2 = string() + "<tr>\n" +
+        "     <td >" + "<img src=\"./LD_LetterPlayer1.png\"  border=3 >" + "</td>\n" +
+        "     <td >" + "<img src=\"./Matrix.png\"  border=3 >" + "</td>\n" +
+        "     <td >" + "<img src=\"./LD_LetterPlayer2.png\"  border=3 >" + "</td>\n" +
+        "</tr>" + "</tbody>\n" +
+        "    </table>\n";
+
+    string script = string()+
+        "  <script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js\" ></script>\n" +
+        "  <script src=\"https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js\"></script>\n";
+    string footer = "\n</body>\n</html> ";
+    ofstream ofs("Juego.html", ofstream::out);
+
+
+    string texto = "";
+
+    //std::cout << texto;
+    texto = head + body1 + contenido1 + contenido2 + script +  footer;
+    //std::cout << texto;
+    ofs << texto;
+
+    ofs.close();
+}
+
+void StructureController::ShowBoard() {
+    system("Juego.html");
 }
