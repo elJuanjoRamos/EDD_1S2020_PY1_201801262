@@ -65,7 +65,7 @@ void LD_LetterPlayer::Clean()
 
 int LD_LetterPlayer::GetLenght() {
 	LetterPlayer* actual = first;
-	int i = 1;
+	int i = 0;
 	if (first != NULL)
 	{
 		while (actual != NULL)

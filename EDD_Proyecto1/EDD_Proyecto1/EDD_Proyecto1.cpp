@@ -12,6 +12,7 @@
 #include "JSON.h";
 #include "LD_LetterPlayer.h"
 #include <math.h>
+#include <time.h>
 
 Menu menu;
 StructureController* controller = StructureController::getInstance();
@@ -33,7 +34,7 @@ int pointPlayer1Temp = 0;
 
 int pointPlayer2 = 0;
 int pointPlayer2Temp = 0;
-int turno = rand() % 1;
+int turno = 0;
 
 bool letras = true;
 bool partida = false;
@@ -48,7 +49,7 @@ void GiveUp(string player);
 void ChangeChips(string player, string a);
 using namespace std;
 
-
+void Temp();
 
 int main()
 {
@@ -106,6 +107,10 @@ int main()
         else if (opcion == 5) {
             Salir = true;
         }
+        else if (opcion == 6)
+        {
+            Temp();
+        }
 
 
 
@@ -120,10 +125,13 @@ void OpenFile() {
         puts("Ingrese el nombre del archivo");
         puts("------------------------------------");
         cout << "\n| Ingrese el nombre del archivo:";
-        string fileName = "";
-        cin >> fileName;
-        puts("------------------------------------");
+        string fileName;
+        string line;
+        getline(cin, fileName);
 
+
+        puts("------------------------------------");
+        
         std::ifstream i;
 
         i.open(fileName + ".json", ios::in);
@@ -137,11 +145,15 @@ void OpenFile() {
 
             //INSERTA LA DIMENSION DEL TABLERO
             controller->InsertBoardDimention(j3.at("dimension"));
+
             puts("");
             puts("Archivo encontrado con exito!!");
             puts("");
-            cout << "Dictionario: " << endl;
             cout << "----------------------" << endl;
+            cout << "Dimesion del tablero: " << j3.at("dimension") << endl;
+            cout << "----------------------" << endl;
+            cout << "Dictionario: " << endl;
+            controller->ClearDictionary();
             //INSERTA LAS PALABRAS AL DICCIONARIO
             for (int x = 0; x < j3.at("diccionario").size(); x++)
             {
@@ -153,6 +165,8 @@ void OpenFile() {
 
             //INSERTA LAS CASILLAS DOBLES EN UN ARREGLO TEMPORAL, ESE ARREGLO SIRVE AL MOMENTO DE INSERTAR EN LA MATRIZ, BUSCA EN EL ARREGLO LA POSICION 
             //X, Y Y SI EXISTE DEVUELVE SI ES DOBLE
+
+            casillaController->Clear();
             for (int i = 0; i < j3.at("casillas").at("dobles").size(); i++)
             {
                 casillaController->Insert(j3.at("casillas").at("dobles")[i].at("x"), j3.at("casillas").at("dobles")[i].at("y"), true, false);
@@ -166,22 +180,18 @@ void OpenFile() {
             for (int i = 0; i < j3.at("casillas").at("triples").size(); i++)
             {
                 casillaController->Insert(j3.at("casillas").at("triples")[i].at("x"), j3.at("casillas").at("triples")[i].at("y"), false, true);
-                cout << "X: " << j3.at("casillas").at("dobles")[i].at("x") << ", Y: " << j3.at("casillas").at("dobles")[i].at("y") << endl;
+                cout << "X: " << j3.at("casillas").at("triples")[i].at("x") << ", Y: " << j3.at("casillas").at("triples")[i].at("y") << endl;
             }
             cout << "----------------------" << endl;
             system("pause");
             break;
 
         }
-        else {
-            puts("");
-            puts("--------------------------");
-            puts("| Archivo no encontrado! |");
-            puts("--------------------------");
-            puts("");
-            system("pause");
+        else
+        {
             menu.Cls();
         }
+        
     } while (-1);
 
 }
@@ -238,7 +248,8 @@ void Reports() {
             puts("3. Usuarios");
             puts("4. Puntajes");
             puts("5. Ultimo Tablero");
-            puts("6. Salir");
+            puts("6. Historial de partidas");
+            puts("7. Salir");
 
             do
             {
@@ -309,8 +320,13 @@ void Reports() {
         {
             controller->PrintMatrix();
         }
+        //Historial de partidas
+        else if (opcion == 6)
+        {
+            controller->PrintHistory();
+        }
         //salir
-        else if (opcion == 6) {
+        else if (opcion == 7) {
             Salir = true;
         }
     } while (Salir == false);
@@ -318,6 +334,9 @@ void Reports() {
 }
 
 void PlayGame() {
+    srand(time(NULL));
+    turno = rand() % 2;
+
     bool Salir = false;
     partida = false;
     player1 = NULL;
@@ -335,13 +354,13 @@ void PlayGame() {
     pointPlayer2 = 0;
     pointPlayer2Temp = 0;
 
-    LDplayer1.Add("H", 4);
-    LDplayer1.Add("O", 1);
-    LDplayer1.Add("L", 1);
-    LDplayer1.Add("A", 1);
+    LDplayer1.Add("M", 3);
+    LDplayer1.Add("U", 1);
+    LDplayer1.Add("N", 1);
     LDplayer1.Add("D", 2);
+    LDplayer1.Add("O", 1);
+    LDplayer1.Add("A", 1); 
     LDplayer1.Add("A", 1);
-    LDplayer1.Add("F", 4);
 
     LDplayer2.Add("M", 3);
     LDplayer2.Add("U", 1);
@@ -367,12 +386,13 @@ void PlayGame() {
     do {
         menu.Cls();
         if (controller->boardDimention > 0) {
+            
             if (controller->arbol.getSize() >= 2) {
                 puts("Nuevo Juego - Scrabble");
                 puts("-------------------");
                 puts("");
-                cout << "Players:  " << controller->arbol.getSize() << "\n";
-                cout << "Matrix:  " << controller->boardDimention << "\n";
+                cout << "Cant. de Jugadores:  " << controller->arbol.getSize() << "\n";
+                cout << "Tam de tablero:  " << controller->boardDimention << "\n";
                 /*
                 ---------------------------------------------INICIALIZAR JUGADORES-------------------------------------------
                 */
@@ -696,12 +716,16 @@ void ValidateWord(string player) {
         posYTemp = posY;
     } while (!(controller->ValidateInsertInBoard(posX, posY)));
 
-
-
     std::cout << "\n Longitud de palabra: ";
     std::cin >> longitud;
-    std::cout << "\n Orientacion de Palabra: (V/H): ";
-    std::cin >> orientacion;
+
+
+    do
+    {
+        std::cout << "\n Orientacion de Palabra: (V/H): ";
+        std::cin >> orientacion;
+    } while (menu.IsNumber(orientacion) || (orientacion != "H" && orientacion != "V"));
+    
     string palabra;
 
     MatrixNode* temp = NULL;
@@ -713,12 +737,12 @@ void ValidateWord(string player) {
         if (temp != NULL)
         {
             if (orientacion == "V") {
-                posYTemp = posY;
                 posY++;
+                posYTemp = posY;
             }
             else if (orientacion == "H") {
-                posXTemp = posX;
                 posX++;
+                posXTemp = posX;
             }
 
             palabra = palabra + temp->data;
@@ -735,7 +759,7 @@ void ValidateWord(string player) {
         }
         else
         {
-            cout << "No Se contro ningun elemento en la posicion X:" << posXTemp << ", Y:" << posXTemp << endl;
+            cout << "No Se contro ningun elemento en la posicion X:" << posX << ", Y:" << posY << endl;
             if (player == "player1")
             {
                 turno = 1;
@@ -744,6 +768,7 @@ void ValidateWord(string player) {
             {
                 turno = 0;
             }
+            break;
             system("pause");
         }
 
@@ -763,18 +788,13 @@ void ValidateWord(string player) {
         if (player == "player1")
         {
             LDplayer1Temp.Clean();
-            newLenght = LDplayer1.GetLenght();
+            newLenght = 7- LDplayer1.GetLenght();
 
         }
         else
         {
             LDplayer2Temp.Clean();
-            newLenght = LDplayer2.GetLenght();
-        }
-
-        if (newLenght == 0)
-        {
-            newLenght = 7;
+            newLenght = 7 - LDplayer2.GetLenght();
         }
         for (size_t i = 0; i < newLenght; i++)
         {
@@ -807,7 +827,7 @@ void ValidateWord(string player) {
         }
         else
         {
-            pointPlayer2 = pointPlayer2 + pointPlayer1Temp;
+            pointPlayer2 = pointPlayer2 + pointsTemp;
             turno = 0;
         }
         cout << "Se ha sumado: " << pointsTemp << " pts a su punteo." << endl;
@@ -859,70 +879,139 @@ void ValidateWord(string player) {
 
 //RENDIRSE
 void GiveUp(string player) {
-    cout << "\n Salir acabara con la partida y se le dara la victoria al otro jugador";
 
-    cout << "\n Esta seguro que desea salir? ";
-    cout << "\n 1. Si, Otro numero. No";
-    string opc2 = "";
-    do
+
+    string winner = "";
+    string loser = "";
+    int pointsWinner = 0;
+    int pointsLoser = 0;
+
+
+
+    
+
+    //Si la lista no esta vacia 
+    if (!controller->QueueIsEmpty())
     {
-        cout << "\n Ingrese una opcion: ";
-        cin >> opc2;
+        cout << "\n--------------------------------------";
+        cout << "\n|               ALERTA                |";
+        cout << "\n--------------------------------------";
+        cout << "\n Todavia quedan fichas en el juego";
+        cout << "\n Salir significa rendirse, esto acabara con la partida y se le dara la victoria al otro jugador";
 
-    } while (!menu.IsNumber(opc2));
-
-    if (opc2 == "1")
-    {
-        menu.Cls();
-
-        cout << "---------------Juego terminado---------------" << endl;
-
-        string winner = "";
-        string loser = "";
-        int pointsWinner = 0;
-        int pointsLoser = 0;
-
-        if (player == "player1")
+        cout << "\n Esta seguro que desea salir? ";
+        cout << "\n 1. Si, Otro numero. No";
+        string opc2 = "";
+        do
         {
-            winner = player2->username;
-            pointsWinner = pointPlayer2;
-            loser = player1->username;
-            pointsLoser = pointPlayer1;
+            cout << "\n Ingrese una opcion: ";
+            cin >> opc2;
+
+        } while (!menu.IsNumber(opc2));
+
+        if (opc2 == "1")
+        {
+            menu.Cls();
+
+            cout << "\n---------------------------------------";
+            cout << "\n|           JUEGO TERMINADO            |";
+            cout << "\n---------------------------------------\n";
+            
+            if (player == "player1")
+            {
+                winner = player2->username;
+                pointsWinner = pointPlayer2;
+                loser = player1->username;
+                pointsLoser = pointPlayer1;
+            }
+            else
+            {
+                winner = player1->username;
+                pointsWinner = pointPlayer1;
+                loser = player2->username;
+                pointsLoser = pointPlayer2;
+            }
+            cout << "Ganador: " << winner << endl;
+            cout << "Puntos: " << pointsWinner << endl;
+            cout << "Perdedor: " << loser << endl;
+            cout << "Puntos: " << pointsLoser << endl;
+
+            controller->InsertHistory(winner, loser, pointsWinner, pointsLoser);
+
+            cout << "---------------------------------------------" << endl;
+            controller->InsertScore(player2->username, pointPlayer2);
+            controller->InsertScore(player1->username, pointPlayer1);
+            cout << " " << endl;
+            cout << "Los datos de los jugadores fueron alamcenados en el historial." << endl;
+
+            partida = true;
+            system("pause");
         }
         else
         {
-            winner = player1->username;
-            pointsWinner = pointPlayer1;
-            loser = player2->username;
-            pointsLoser = pointPlayer2;
+            letras = false;
+            if (player == "player1")
+            {
+                turno = 0;
+            }
+            else
+            {
+                turno = 1;
+            }
         }
+    }
+    //La cola esta vacia
+    else
+    {
+        cout << "\n---------------------------------------";
+        cout << "\n|           JUEGO TERMINADO            |";
+        cout << "\n---------------------------------------";
+        cout << "\nYa no quedan fichas en la cola y con las ";
+        cout << "\nfichas sobrantes no se pueden formar mas palabras";
+        cout << "\n\n Calculando ganador ... \n\n";
 
-        cout << "Ganador: " << winner << endl;
-        cout << "Puntos: " << pointsWinner << endl;
-        cout << "Perdedor: " << loser << endl;
-        cout << "Puntos: " << pointsLoser << endl;
+        if (pointPlayer1 != pointPlayer2)
+        {
+            if (pointPlayer1 > pointPlayer2)
+            {
+                winner = player1->username;pointsWinner = pointPlayer1; 
+                loser = player2->username;pointsLoser = pointPlayer2;
+            }
+            else if (pointPlayer1 < pointPlayer2) {
+                winner = player2->username;
+                pointsWinner = pointPlayer2;
+                loser = player1->username;
+                pointsLoser = pointPlayer1;
+            }
+            cout << "Ganador: " << winner << endl;
+            cout << "Puntos: " << pointsWinner << endl;
+            cout << "Perdedor: " << loser << endl;
+            cout << "Puntos: " << pointsLoser << endl;
+            controller->InsertHistory(winner, loser, pointsWinner, pointsLoser);
+            cout << "---------------------------------------------" << endl;
+          
+
+        }
+        else
+        {
+            cout << "Empate: " << player1->username << "/ " << player2->username << endl;
+            cout << "Puntos: " << pointPlayer1 << endl;
+            controller->InsertHistory(player1->username + "/ " + player2->username, "", pointPlayer1, pointPlayer1);
+        }
 
         cout << "---------------------------------------------" << endl;
         controller->InsertScore(player2->username, pointPlayer2);
         controller->InsertScore(player1->username, pointPlayer1);
         cout << " " << endl;
         cout << "Los datos de los jugadores fueron alamcenados en el historial." << endl;
-
         partida = true;
         system("pause");
+
+        
     }
-    else
-    {
-        letras = false;
-        if (player == "player1")
-        {
-            turno = 0;
-        }
-        else
-        {
-            turno = 1;
-        }
-    }
+
+
+    
 }
 // CAMBIAR FICHAS
 
@@ -975,19 +1064,20 @@ void ChangeChips(string player, string a) {
             //Se hace push otra vez a la cola
             controller->PushGameChip(letterPlayerPoint->letter, letterPlayerPoint->punteo, 1);
             //Inserta a las fichas del jugador la ficha que esta al inicio de la cola
-            LDplayer1.Eliminar(letra);
             GameChipNode* let = controller->PopChip();
             if (player == "player1")
             {
+                LDplayer1.Eliminar(letra);
                 LDplayer1.Add(let->letter, let->points);
                 LDplayer1Temp.Add(let->letter, let->points);
-                LDplayer1.Print("Nuevas" + a);
+                LDplayer1.Print("Nuevas " + a);
             }
             else
             {
+                LDplayer2.Eliminar(letra);
                 LDplayer2.Add(let->letter, let->points);
                 LDplayer2Temp.Add(let->letter, let->points);
-                LDplayer2.Print("Nuevas" + a);
+                LDplayer2.Print("Nuevas " + a);
             }
         }
         else
@@ -1008,4 +1098,27 @@ void ChangeChips(string player, string a) {
             endReplace = false;
         }
     }
+}
+
+void Temp() {
+    menu.Cls();
+    cout << "archivo html";
+
+    string head = "<!DOCTYPE html>\n<html>\n<body>\n";
+      
+    string body = "<h1>My First Heading</h1>";
+
+    string footer = "\n</body>\n</html> ";
+    ofstream ofs("Juego.html", ofstream::out);
+
+    
+    string texto = "";
+   
+    //std::cout << texto;
+    texto = head + body +footer;
+    //std::cout << texto;
+    ofs << texto;
+
+    ofs.close();
+    system("Juego.html");
 }

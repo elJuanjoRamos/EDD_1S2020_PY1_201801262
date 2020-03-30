@@ -85,6 +85,9 @@
       <Filter>Cpp Files</Filter>
     </ClCompile>
     <ClCompile Include="LS_TreeTour.cpp">
+      <Filter>Cpp Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LS_GameHistory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -147,6 +150,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="LS_TreeTour.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LS_GameHistory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

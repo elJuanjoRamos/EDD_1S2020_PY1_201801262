@@ -3,50 +3,14 @@ digraph Sparce_Matrix {
 	Mt[ label = "Matrix", width = 1.5, style = filled, fillcolor = firebrick1, group = 1 ];
 	e0[ shape = point, width = 0 ];
 e1[shape = point, width = 0];
-Nodox2 [label = "X=0" width = 1.5 style = filled, fillcolor = lightskyblue, group =2];
-Nodox5 [label = "X=1" width = 1.5 style = filled, fillcolor = lightskyblue, group =5];
-Nodox7 [label = "X=2" width = 1.5 style = filled, fillcolor = lightskyblue, group =7];
-Nodox9 [label = "X=3"width = 1.5 style = filled, fillcolor = lightskyblue, group =9];
+Nodox2 [label = "X=0"width = 1.5 style = filled, fillcolor = lightskyblue, group =2];
 Nodoy3->Nodoy4[constraint=false, dir=both];
-Nodoy4->Nodoy6[constraint=false, dir=both];
-Nodoy6->Nodoy8[constraint=false, dir=both];
-Nodoy8->Nodoy10[constraint=false, dir=both];
-Nodoy11->Nodoy12[constraint=false, dir=both];
-Nodoy13->Nodoy14[constraint=false, dir=both];
-Nodoy15->Nodoy16[constraint=false, dir=both];
-Nodoy3 [label = "Y=0" width = 1.5 style = filled, fillcolor = bisque1, group = 1  ];
-Nodoy11 [label = "Y=3" width = 1.5 style = filled, fillcolor = bisque1, group = 1  ];
-Nodoy13 [label = "Y=4" width = 1.5 style = filled, fillcolor = bisque1, group = 1  ];
-Nodoy15 [label = "Y=5"width = 1.5 style = filled, fillcolor = bisque1, group = 1  ];
+Nodoy3 [label = "Y=0"width = 1.5 style = filled, fillcolor = bisque1, group = 1  ];
 Nodox2->Nodoy4[dir=both]
-Nodox5->Nodoy6[dir=both]
-Nodox7->Nodoy8[dir=both]
-Nodox9->Nodoy10[dir=both]
-Nodoy10->Nodoy12[dir=both];
-Nodoy12->Nodoy14[dir=both];
-Nodoy14->Nodoy16[dir=both];
 Mt->Nodox2;
-Nodox2->Nodox5[dir=both];
-Nodox5->Nodox7[dir=both];
-Nodox7->Nodox9[dir=both];
 Mt->Nodoy3[dir=both];
-Nodoy3->Nodoy11[dir=both];
-Nodoy11->Nodoy13[dir=both];
-Nodoy13->Nodoy15[dir=both];
- { rank = same; Mt; Nodox2; Nodox5; Nodox7; Nodox9}
+ { rank = same; Mt; Nodox2}
 Nodoy3[label = "Y=0" width = 1.5, group = 1];
-Nodoy4[label = "H" width = 1.5, group = 2];
-Nodoy6[label = "O\n doble" width = 1.5, group = 5];
-Nodoy8[label = "L" width = 1.5, group = 7];
-Nodoy10[label = "A" width = 1.5, group = 9];
-Nodoy11[label = "Y=3" width = 1.5, group = 1];
-Nodoy12[label = "M" width = 1.5, group = 9];
-Nodoy13[label = "Y=4" width = 1.5, group = 1];
-Nodoy14[label = "U" width = 1.5, group = 9];
-Nodoy15[label = "Y=5" width = 1.5, group = 1];
-Nodoy16[label = "N" width = 1.5, group = 9];
-{rank= same; Nodoy3;Nodoy4;Nodoy6;Nodoy8;Nodoy10}
- {rank=same;Nodoy11;Nodoy12}
- {rank=same;Nodoy13;Nodoy14}
- {rank=same;Nodoy15;Nodoy16}
+Nodoy4[label = "M" width = 1.5, group = 2];
+{rank= same; Nodoy3;Nodoy4}
 }

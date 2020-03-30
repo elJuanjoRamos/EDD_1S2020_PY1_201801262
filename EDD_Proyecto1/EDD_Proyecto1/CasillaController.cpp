@@ -18,29 +18,33 @@ CasillaController::CasillaController() {}
 
 
 void CasillaController::Insert(int x1, int y1, bool esDoble, bool esTriple) {
-    
+        CasillaNode c;
+        c.setData(x1, y1, esDoble, esTriple);
+
         if (esDoble)
         {
+            doubleList.push_back(c);
 
-            for (int i = 0; i < 100; i++)
+           /* for (int i = 0; i < 100; i++)
             {
                 if (doubleList[i].getEmpty())
                 {
                     doubleList[i].setData(x1, y1, esDoble, esTriple);
                     break;
                 }
-            }
+            }*/
         
         }
         else {
-            for (int i = 0; i < 100; i++)
+            /*for (int i = 0; i < 100; i++)
             {
                 if (tripleList[i].getEmpty())
                 {
                     tripleList[i].setData(x1, y1, esDoble, esTriple);
                     break;
                 }
-            }
+            }*/
+            tripleList.push_back(c);
         }
 
 
@@ -59,16 +63,12 @@ void CasillaController::Show() {
 }
 
 bool CasillaController::getCasillaTriple(int x1, int y1) {
-    for (int i = 0; i < 100; i++)
+    for (auto& d : tripleList) // access by reference to avoid copying
     {
-        if (!tripleList[i].getEmpty())
+        if (d.getX() == x1 && d.getY() == y1)
         {
-            if (tripleList[i].getX() == x1 && tripleList[i].getY() == y1)
-            {
-                return true;
-                break;
-            }
-
+            return true;
+            break;
         }
     }
     return false;
@@ -76,17 +76,19 @@ bool CasillaController::getCasillaTriple(int x1, int y1) {
 
 
 bool CasillaController::getCasillaDoble(int x1, int y1) {
-    for (int i = 0; i < 100; i++)
+    for (auto& d : doubleList) // access by reference to avoid copying
     {
-        if (!doubleList[i].getEmpty())
+        if (d.getX() == x1 && d.getY() == y1)
         {
-            if (doubleList[i].getX() == x1 && doubleList[i].getY() == y1)
-            {
-                return true;
-                break;
-            }
-
+            return true;
+            break;
         }
     }
     return false;
+}
+
+
+void CasillaController::Clear() {
+    doubleList.clear();
+    tripleList.clear();
 }

@@ -1,12 +1,12 @@
 digraph G {graph[label="Fichas de Pedro", labelloc=t, fontsize=20]
 node[shape = box];
-Nodo0 [label = "D"];
-Nodo1 [label = "O"];
-Nodo2 [label = "A"];
-Nodo3 [label = "F"];
-Nodo4 [label = "M"];
-Nodo5 [label = "U"];
-Nodo6 [label = "N"];
+Nodo0 [label = "M"];
+Nodo1 [label = "U"];
+Nodo2 [label = "N"];
+Nodo3 [label = "D"];
+Nodo4 [label = "O"];
+Nodo5 [label = "A"];
+Nodo6 [label = "F"];
 Nodo0->Nodo1;
 Nodo1->Nodo0;
 Nodo1->Nodo2;

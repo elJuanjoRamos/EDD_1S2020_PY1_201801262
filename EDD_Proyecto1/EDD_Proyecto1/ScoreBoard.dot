@@ -1,5 +1,3 @@
 digraph G {rankdir=LR;node[shape = box];
-Nodo0 [label = "Jugador: Pedro\l0"];
-Nodo1 [label = "Jugador: Juan\l0"];
-Nodo1->Nodo0;
+Nodo0 [label = " Jugador: Pedro\lPuntos: 14"];
 }

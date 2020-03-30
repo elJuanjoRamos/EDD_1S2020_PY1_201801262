@@ -6,6 +6,7 @@
 #include "Queue_GameChip.h";
 #include "Matrix.h";
 #include "Letter.h";
+#include "LS_GameHistory.h";
 #include <time.h>
 class StructureController
 {
@@ -22,6 +23,7 @@ public:
 	LDC_DiccionaryList diccionario;
 	Queue_GameChip queuegame;
 	Matrix mat;
+	LS_GameHistory history;
 
 	//LETTERS
 	void RandomLetters();
@@ -37,6 +39,7 @@ public:
 	void InsertDictionary(string text);
 	void PrintDictionary();
 	DictionaryNode* SearchWord(string word);
+	void ClearDictionary();
 	//Board
 	void InsertBoardDimention(int d);
 	//verifica si la posicion xy este dentro del limite del tablero
@@ -58,6 +61,11 @@ public:
 
 	void InsertScore(string name, int points);
 	void PrintScore(string user);
+
+	//History
+
+	void InsertHistory(string winner, string loser, int wp, int lp);
+	void PrintHistory();
 
 };
 
