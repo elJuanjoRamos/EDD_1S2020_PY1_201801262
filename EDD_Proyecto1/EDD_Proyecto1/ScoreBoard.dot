@@ -1,0 +1,4 @@
+digraph G {rankdir=LR;graph[label="Historial de Juan", labelloc=t, fontsize=20]
+node[shape = box];
+Nodo0 [label = " Jugador: Juan\lPuntos: 0"];
+}

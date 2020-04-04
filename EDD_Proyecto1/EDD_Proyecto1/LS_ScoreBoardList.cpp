@@ -47,7 +47,7 @@ void ScoreBoardList::Print(string user) {
 	string texto = "";
 	int contador = 0;
 
-	if (user != "ALL" || user != "All" || user != "all")
+	if (user != "ALL" && user != "All" && user != "all")
 	{
 		name = name + user;
 	}
@@ -58,7 +58,7 @@ void ScoreBoardList::Print(string user) {
 
 	while (aux != NULL)
 	{
-		if (user != "ALL" || user != "All"  || user != "all")
+		if (user != "ALL" && user != "All"  && user != "all")
 		{
 			if (aux->username == user)
 			{
@@ -67,7 +67,7 @@ void ScoreBoardList::Print(string user) {
 			}
 		}
 		else {
-			nodos = nodos + "Nodo" + to_string(contador) + " [label = " + '"' + "Jugador: " + aux->username + string("\\l") + to_string(aux->points) + '"' + "];\n";
+			nodos = nodos + "Nodo" + to_string(contador) + " [label = " + '"' + "Jugador: " + aux->username + string("\\lPuntos: ") + to_string(aux->points) + '"' + "];\n";
 			contador++;
 
 		}

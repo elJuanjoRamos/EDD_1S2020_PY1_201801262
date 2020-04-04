@@ -3,11 +3,4 @@ digraph Sparce_Matrix {
 	Mt[ label = "Matrix", width = 1.5, style = "rounded,filled", fillcolor = firebrick1, group = 1 ];
 	e0[ shape = point, width = 0 ];
 e1[shape = point, width = 0];
-Nodox2 [label = "X=0"width = 1.5 style = "rounded,filled", fillcolor = lightskyblue, group =2];
-Nodoy3 [label = "Y=0"width = 1.5 style = "rounded,filled", fillcolor = darkseagreen1, group = 1  ];
-Mt->Nodox2;
-Mt->Nodoy3[dir=both];
- { rank = same; Mt; Nodox2}
-Nodoy3[label = "Y=0" width = 1.5, group = 1];
-{rank= same; Nodoy3}
 }

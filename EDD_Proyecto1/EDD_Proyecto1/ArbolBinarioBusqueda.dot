@@ -1,7 +1,7 @@
 digraph grafica{
 rankdir=TB;graph[label="Arbol de usuarios", labelloc=t, fontsize=20]
 node [shape = record, style=filled, fillcolor=white];
-nodo1[ label ="1 - juan"];
-nodo2 [ label ="2 - pedro"];
+nodo1[ label ="1 - Juan"];
+nodo2 [ label ="2 - Pedro"];
 nodo1->nodo2
 }

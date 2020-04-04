@@ -233,6 +233,7 @@ void Players() {
     } while (-1);
 }
 void Reports() {
+    int opcion = 0;
     bool Salir = false;
     do {
         if (opc == "")
@@ -258,7 +259,7 @@ void Reports() {
             } while (menu.IsNumber(opc) != true);
         }
 
-        int opcion = atoi(opc.c_str());
+        opcion = atoi(opc.c_str());
         opc = "";
 
         //Print dictionary
@@ -277,18 +278,23 @@ void Reports() {
         }
         //Jugadores
         else if (opcion == 3) {
+            string a = "";
             int opcU = 0;
             do
             {
-                menu.Cls();
-                cout << "----------REPORTE USUARIOS----------\n";
-                cout << "1.Arbol\n";
-                cout << "2.Arbol PreOrden\n";
-                cout << "3.Arbol InOrder\n";
-                cout << "4.Arbol PostOrden\n";
-                cout << "Ingrese la opcion: ";
-                cin >> opcU;
+                do
+                {
+                    menu.Cls();
+                    cout << "----------REPORTE USUARIOS----------\n";
+                    cout << "1.Arbol\n";
+                    cout << "2.Arbol PreOrden\n";
+                    cout << "3.Arbol InOrder\n";
+                    cout << "4.Arbol PostOrden\n";
+                    cout << "Ingrese la opcion: ";
+                    cin >> a;
 
+                } while (!(menu.IsNumber(a)));
+                opcU = atoi(a.c_str());
             } while (opcU > 4);
 
             if (opcU == 1)
@@ -310,6 +316,8 @@ void Reports() {
         }
         //Puntajes
         else if (opcion == 4) {
+            menu.Cls();
+            cout << "----------REPORTE PUNTAJES----------\n";
             controller->PrintUsers("all");
             puts("Ingrese El nombre de usuario para ver sus puntajes");
             puts("O ingrese ALL para ver todos los puntajes");
@@ -331,7 +339,7 @@ void Reports() {
         else if (opcion == 7) {
             Salir = true;
         }
-    } while (Salir == false);
+    } while (Salir == false || opcion > 7);
 
 }
 

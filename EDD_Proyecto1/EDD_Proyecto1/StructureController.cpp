@@ -204,7 +204,7 @@ void StructureController::PrintBoard(string player1, string player2, int p1, int
     string head = string() + "<!DOCTYPE html>\n" +
         "<html>\n" +
         "<head>\n" +
-        "    <meta charset='utf-8' http-equiv=\"refresh\" content=\"1\" >\n" +
+        "    <meta charset='utf-8' http-equiv=\"refresh\" content=\"3\" >\n" +
         "    <meta http-equiv='X-UA-Compatible' content='IE=edge'>\n" +
         "    <title> Repote Scrabble" + "</title>\n" +
         "    <meta name='viewport' content='width=device-width, initial-scale=1'>\n" +
