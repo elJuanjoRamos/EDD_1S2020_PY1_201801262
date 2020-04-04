@@ -53,6 +53,7 @@ using namespace std;
 
 int main()
 {
+    
     setlocale(LC_ALL, "es_ES");
     setlocale(LC_CTYPE, "Spanish");
 
@@ -381,11 +382,25 @@ void PlayGame() {
         if (controller->boardDimention > 0) {
             
             if (controller->arbol.getSize() >= 2) {
-                puts("Nuevo Juego - Scrabble");
-                puts("-------------------");
+                
+                std::cout << " ______   ____ _____            ____  ____  _      ______  " << endl;
+                std::cout << "/  ____|/ ____|  __ \\     /\\   |  _ \\|  _ \\| |    |  ____| " << endl;
+                std::cout << "| (___ | |    | |__) |   /  \\  | |_) | |_) | |    | |__    " << endl;
+                std::cout << " \\___ \\| |    |  _  /   / /\\ \\ |  _ <|  _ <| |    |  __|   " << endl;
+                std::cout << " ____) | |____| | \\ \\  / ____ \\| |_) | |_) | |____| |____  " << endl;
+                std::cout << "|_____/ \\_____|_|  \\_\\/_/    \\_\\____/|____/|______|______|" << endl;
+                puts("Version 1.0");
                 puts("");
-                std::cout << "Cant. de Jugadores:  " << controller->arbol.getSize() << "\n";
-                std::cout << "Tam de tablero:  " << controller->boardDimention << "\n";
+                puts("------------------------------");
+                puts("  Configuraciones Iniciales ");
+                puts("------------------------------");
+
+                std::cout << "* Numero de Jugadores:  " << controller->arbol.getSize() << "\n";
+                std::cout << "* Tam de tablero:  " << controller->boardDimention << "\n";
+                std::cout << "* Diccionario:  Cargado y listo" << "\n";
+                std::cout << "* Casillas Dobles: Habilitadas" << "\n";
+                std::cout << "* Casillas Truples: Habilitadas" << "\n";
+
                 /*
                 ---------------------------------------------INICIALIZAR JUGADORES-------------------------------------------
                 */
