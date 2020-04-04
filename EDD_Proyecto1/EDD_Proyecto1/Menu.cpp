@@ -4,13 +4,10 @@
 
 
 void Menu::getMenu() {
-	//SetColorB(2,19);
-	//Rectangle(20,8,40,12,"#");
-	//SetColorA(2,22);
 	Menu::Print(20, 2, "UNIVERSIDAD DE SAN CARLOS DE GUATEMALA", 10);
 	Menu::Print(20, 3, "FACULTAD DE INGENIERIA", 10);
 	Menu::Print(20, 4, "ESTRUCTURA DE DATOS", 10);
-	Menu::Print(20, 5, "Proyecto 1", 10);
+	Menu::Print(20, 5, "PROYECTO 1", 10);
 	Menu::Print(20, 6, "JUAN JOSE RAMOS CAMPOS", 10);
 	Menu::Print(20, 7, "201801262", 10);
 	Menu::Print(28, 10, "*** MENU PRINCIPAL ***", 15);
@@ -22,6 +19,8 @@ void Menu::getMenu() {
 	Menu::Print(28, 16, "4. Reportes", 15);
 	Menu::Print(28, 17, "5. Salir", 15);
 	Menu::Print(28, 18, " ", 15);
+
+	
 
 }
 

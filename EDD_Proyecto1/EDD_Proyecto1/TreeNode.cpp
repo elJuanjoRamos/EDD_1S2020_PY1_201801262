@@ -19,9 +19,8 @@ int TreeNode::GetLenght() {
 
 void TreeNode::Print()
 {
-	string archivoCabeza = "digraph G {"
-		"node[shape = box];\n";
-
+	string name = "Arbol de usuarios";
+	
 	string nodos;
 	string juntarNodos;
 	string masNodos;
@@ -32,7 +31,7 @@ void TreeNode::Print()
 	string texto = "";
 
 
-	texto = "digraph grafica{\n" + string("rankdir=TB;") + "node [shape = record, style=filled, fillcolor=white];\n"+ GetBody() + "}";
+	texto = "digraph grafica{\n" + string("rankdir=TB;") + "graph[label=\"" + name + "\", labelloc=t, fontsize=20]\n" + "node [shape = record, style=filled, fillcolor=white];\n"+ GetBody() + "}";
 	
 	
 	ofs << texto;
@@ -46,11 +45,11 @@ string TreeNode::GetBody() {
 	string etiqueta;
 	if (left == NULL && right == NULL)
 	{
-		etiqueta = "nodo" + to_string(index) + " [ label =\"" + to_string(index) + " - " + username + string("\\l") + to_string(lenght) + "\"];\n";
+		etiqueta = "nodo" + to_string(index) + " [ label =\"" + to_string(index) + " - " + username + "\"];\n";
 	}
 	else
 	{
-		etiqueta = "nodo" + to_string(index) + "[ label =\"" + to_string(index) + " - " + username + "\\l" + to_string(lenght) + "\"];\n";
+		etiqueta = "nodo" + to_string(index) + "[ label =\"" + to_string(index) + " - " + username + "\"];\n";
 	}
 	if (left != NULL)
 	{

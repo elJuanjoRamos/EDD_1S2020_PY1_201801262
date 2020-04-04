@@ -135,8 +135,7 @@ void StructureController::PrintHistory() {
 //LETTERS 
 
 void StructureController::RandomLetters() {
-
-   /* Letter* letras[25];
+    Letter* letras[25];
     //1
     letras[0] = new Letter("A", 1, 12);
     letras[1] = new Letter("E", 1, 12);
@@ -195,51 +194,8 @@ void StructureController::RandomLetters() {
                 //controller->PrintGameChips();
             }
         }
-        
-    } while (Salir == false);*/
-    
-    Letter* letras[10];
-    //1
-    letras[0] = new Letter("A", 1, 1);
-    letras[1] = new Letter("E", 1, 1);
-    letras[2] = new Letter("O", 1, 1);
-    letras[3] = new Letter("I", 1, 1);
-    letras[4] = new Letter("S", 1, 1);
-    letras[5] = new Letter("N", 1, 1);
-    letras[6] = new Letter("L", 1, 1);
-    letras[7] = new Letter("R", 1, 1);
-    letras[8] = new Letter("U", 1, 1);
-    letras[9] = new Letter("T", 1, 1);
-    //2 
-
-    //INGRESAR ALEATORIO
-    bool Salir = false;
-    srand(time(NULL));
-    do {
-        int num = rand() % 10;
-        //cout << num << " ";
-        if (letras[num]->cant > 0) {
-            letras[num]->cant = letras[num]->cant - 1;
-
-            PushGameChip(letras[num]->letter, letras[num]->points, 1);
-        }
-        else {
-            int contador = 0;
-            for (size_t i = 0; i < 10; i++)
-            {
-                if (letras[i]->cant > 0) {
-                    contador++;
-                }
-            }
-            //cout << "CONTADOR: " << contador << "\n";
-            if (contador == 0) {
-                Salir = true;
-                //controller->PrintGameChips();
-            }
-        }
 
     } while (Salir == false);
-
 }
 
 

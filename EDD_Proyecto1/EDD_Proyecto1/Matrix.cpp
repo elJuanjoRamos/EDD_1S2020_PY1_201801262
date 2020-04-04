@@ -90,18 +90,16 @@ MatrixNode* Matrix::CreateColumn(int x) {
 MatrixNode* Matrix::CreateRow(int y) {
 	MatrixNode* nuevo = new MatrixNode("Y=" + to_string(y), -1, y, false, false);
 
-
-
 	if (y < root->y) {
 
-		nuevo->next = root;
+		nuevo->down = root;
 		root = nuevo;
 	}
 	else {
 		MatrixNode* reco = root;
 		MatrixNode* ant = root;
 
-		while (y >= reco->x && reco->down != NULL) {
+		while (y >= reco->y && reco->down != NULL) {
 			ant = reco;
 			reco = reco->down;
 		}
@@ -237,22 +235,6 @@ void Matrix::print_x_header(MatrixNode* cabezaY, int x) {
 		cabezaY = cabezaY->down;
 
 	}
-
-	/*nodos = nodos + "Nodox" + to_string(x) + "->Nodoy" + to_string(cabezaY->index) + "[dir=both]\n";
-	while (cabezaY != NULL)
-	{
-		if (cabezaY->down != NULL)
-		{
-			nodos = nodos + "Nodoy" + to_string(cabezaY->index) + " [label = " + '"' + cabezaY->data + '"' + "];\n"
-				+ "Nodoy" + to_string(cabezaY->index) + "->Nodoy" + to_string(cabezaY->down->index) + "[dir=both];\n";
-		}
-		else
-		{
-			nodos = nodos + "Nodoy" + to_string(cabezaY->index) + " [label = " + '"' + cabezaY->data + '"' + "];\n";
-		}
-		cabezaY = cabezaY->down;
-
-	}*/
 }
 
 void Matrix::print_y_header(MatrixNode* cabezaX, int index) {
@@ -266,23 +248,6 @@ void Matrix::print_y_header(MatrixNode* cabezaX, int index) {
 		}
 		cabezaX = cabezaX->next;
 	}
-
-	/*nodos = nodos + "Nodoy" + to_string(index) + "->Nodoy" + to_string(cabezaX->index) + "[constraint=false, dir=both]\n";
-
-	while (cabezaX != NULL)
-	{
-		if (cabezaX->next != NULL)
-		{
-			nodos = nodos + "Nodoy" + to_string(cabezaX->index) + " [label = " + '"' + cabezaX->data + '"' + "];\n" +
-				+"Nodoy" + to_string(cabezaX->index) + "->Nodoy" + to_string(cabezaX->next->index) + "[constraint=false, dir=both];\n";
-
-			//nodos =  nodos + "Nodoy" + to_string(cabezaX->index) + "->Nodoy" + to_string(cabezaX->next->index) + "[constraint=false, dir=both];\n";
-		}
-		else {
-			nodos = nodos + "Nodoy" + to_string(cabezaX->index) + " [label = " + '"' + cabezaX->data + '"' + "];\n";
-		}
-		cabezaX = cabezaX->next;
-	}*/
 
 }
 
@@ -345,8 +310,8 @@ void Matrix::Print() {
 
 
 	//NUEVO CODIGO DE PRUEVA
-	string archivoCabeza = "digraph Sparce_Matrix { \n node [shape=box]\n";
-	archivoCabeza = archivoCabeza + "\tMt[ label = \"Matrix\", width = 1.5, style = filled, fillcolor = firebrick1, group = 1 ];\n";
+	string archivoCabeza = string()+ "digraph Sparce_Matrix { \n node [shape=box, style = " + '"' + "rounded,filled" + '"' + ", fillcolor = bisque1]\n";
+	archivoCabeza = archivoCabeza + "\tMt[ label = \"Matrix\", width = 1.5, style = " + '"' + "rounded,filled" + '"' +", fillcolor = firebrick1, group = 1 ];\n";
 	archivoCabeza = archivoCabeza + "\te0[ shape = point, width = 0 ];\ne1[shape = point, width = 0];\n";
 	string texto = "";
 	if (root->next != NULL && root->down != NULL)
@@ -361,12 +326,12 @@ void Matrix::Print() {
 	{
 		if (cabezaY->down != NULL)
 		{
-			nodosy = nodosy + "Nodoy" + to_string(cabezaY->index) + " [label = " + '"' + "Y=" + to_string(cabezaY->y) + '"' + " width = 1.5 style = filled, fillcolor = bisque1, group = 1  ];\n";
+			nodosy = nodosy + "Nodoy" + to_string(cabezaY->index) + " [label = " + '"' + "Y=" + to_string(cabezaY->y) + '"' + " width = 1.5 style = " + '"' + "rounded,filled" + '"' + ", fillcolor = darkseagreen1, group = 1  ];\n";
 			enlacesy = enlacesy + "Nodoy" + to_string(cabezaY->index) + "->Nodoy" + to_string(cabezaY->down->index) + "[dir=both];\n";
 		}
 		else
 		{
-			nodosy = nodosy + "Nodoy" + to_string(cabezaY->index) + " [label = " + '"' + "Y=" + to_string(cabezaY->y) + '"' + "width = 1.5 style = filled, fillcolor = bisque1, group = 1  ];\n";
+			nodosy = nodosy + "Nodoy" + to_string(cabezaY->index) + " [label = " + '"' + "Y=" + to_string(cabezaY->y) + '"' + "width = 1.5 style = " + '"' + "rounded,filled" + '"' + ", fillcolor = darkseagreen1, group = 1  ];\n";
 		}
 		cabezaY = cabezaY->down;
 
@@ -380,12 +345,12 @@ void Matrix::Print() {
 	{
 		if (cabezaX->next != NULL)
 		{
-			nodos = nodos + "Nodox" + to_string(cabezaX->index) + " [label = " + '"' + "X=" + to_string(cabezaX->x) + '"' + " width = 1.5 style = filled, fillcolor = lightskyblue, group =" + to_string(cabezaX->index) + "];\n";
+			nodos = nodos + "Nodox" + to_string(cabezaX->index) + " [label = " + '"' + "X=" + to_string(cabezaX->x) + '"' + " width = 1.5 style = " + '"' + "rounded,filled" + '"' + ", fillcolor = lightskyblue, group =" + to_string(cabezaX->index) + "];\n";
 			enlacesx = enlacesx + "Nodox" + to_string(cabezaX->index) + "->Nodox" + to_string(cabezaX->next->index) + "[dir=both];\n";
 			samex = samex + "Nodox" + to_string(cabezaX->index) + "; ";
 		}
 		else {
-			nodos = nodos + "Nodox" + to_string(cabezaX->index) + " [label = " + '"' + "X=" + to_string(cabezaX->x) + '"' + "width = 1.5 style = filled, fillcolor = lightskyblue, group =" + to_string(cabezaX->index) + "];\n";
+			nodos = nodos + "Nodox" + to_string(cabezaX->index) + " [label = " + '"' + "X=" + to_string(cabezaX->x) + '"' + "width = 1.5 style = " + '"' + "rounded,filled" + '"' + ", fillcolor = lightskyblue, group =" + to_string(cabezaX->index) + "];\n";
 			samex = samex + "Nodox" + to_string(cabezaX->index) + "}\n";
 
 		}
@@ -419,15 +384,22 @@ void Matrix::Print() {
 			//////
 
 
-
 			MatrixNode* padre = auxtemp;
 			do
 			{
 				padre = padre->up;
 			} while (padre->up != NULL);
 
-			nodoTemp = nodoTemp + "Nodoy" + to_string(auxtemp->index) + "[label = \"" + auxtemp->data + doubleTriple + "\" width = 1.5, group = " + to_string(padre->index) + "];" + "\n";
+			if (auxtemp->data == "Ñ"  || auxtemp->data  == "¥")
+			{
+				nodoTemp = nodoTemp + "Nodoy" + to_string(auxtemp->index) + "[label = \"" + "Ñ" + doubleTriple + "\" width = 1.5, group = " + to_string(padre->index) + "];" + "\n";
 
+			}
+			else
+			{
+				nodoTemp = nodoTemp + "Nodoy" + to_string(auxtemp->index) + "[label = \"" + auxtemp->data + doubleTriple + "\" width = 1.5, group = " + to_string(padre->index) + "];" + "\n";
+			}
+			
 			if (auxtemp->next != NULL)
 			{
 				samey = samey + "Nodoy" + to_string(auxtemp->index) + ";";

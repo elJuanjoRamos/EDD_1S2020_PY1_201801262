@@ -1,9 +1,21 @@
 digraph G {rankdir=LR;label="PosOrden: Izq, Der, Raiz";node[shape=box];
-nodo3 [ label ="3 - Paola"];
-nodo4 [ label ="4 - Rafael"];
-nodo2 [ label ="2 - Pedro"];
+nodo8 [ label ="8 - Andrea"];
+nodo5 [ label ="5 - Daniel"];
+nodo9 [ label ="9 - Jacqueline"];
+nodo3 [ label ="3 - Estuardo"];
+nodo7 [ label ="7 - Kembly"];
+nodo10 [ label ="10 - Xavier"];
+nodo6 [ label ="6 - Renee"];
+nodo4 [ label ="4 - Pepe"];
+nodo2 [ label ="2 - Maria"];
 nodo1 [ label ="1 - Juan"];
-nodo3-> nodo4
+nodo8-> nodo5
+nodo5-> nodo9
+nodo9-> nodo3
+nodo3-> nodo7
+nodo7-> nodo10
+nodo10-> nodo6
+nodo6-> nodo4
 nodo4-> nodo2
 nodo2-> nodo1
 }

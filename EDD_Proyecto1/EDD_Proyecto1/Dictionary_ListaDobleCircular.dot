@@ -1,4 +1,5 @@
 digraph G {rankdir=LR
+graph[label="Diccionario de juego", labelloc=t, fontsize=20]
 node[shape = box];
 Nodo0 [label = "hola"];
 Nodo1 [label = "mundo"];

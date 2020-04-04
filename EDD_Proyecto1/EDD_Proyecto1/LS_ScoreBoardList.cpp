@@ -36,8 +36,7 @@ void ScoreBoardList::Insert(int points, string username) {
 }
 
 void ScoreBoardList::Print(string user) {
-	string archivoCabeza = "digraph G {rankdir=LR;"
-		"node[shape = box];\n";
+	string name = "Historial de ";
 
 	string nodos;
 	string juntarNodos;
@@ -48,9 +47,18 @@ void ScoreBoardList::Print(string user) {
 	string texto = "";
 	int contador = 0;
 
+	if (user != "ALL" || user != "All" || user != "all")
+	{
+		name = name + user;
+	}
+	else
+	{
+		name = "Historial General";
+	}
+
 	while (aux != NULL)
 	{
-		if (user != "ALL")
+		if (user != "ALL" || user != "All"  || user != "all")
 		{
 			if (aux->username == user)
 			{
@@ -70,7 +78,9 @@ void ScoreBoardList::Print(string user) {
 	{
 		juntarNodos = juntarNodos + "Nodo" + to_string(i) + "->Nodo" + to_string(i - 1) + ";\n";
 	}
-
+	string archivoCabeza = "digraph G {rankdir=LR;"
+		"graph[label=\"" + name + "\", labelloc=t, fontsize=20]\nnode[shape = box];\n";
+	name = "";
 	//std::cout << texto;
 	texto = archivoCabeza + nodos + juntarNodos + "}";
 	//std::cout << texto;

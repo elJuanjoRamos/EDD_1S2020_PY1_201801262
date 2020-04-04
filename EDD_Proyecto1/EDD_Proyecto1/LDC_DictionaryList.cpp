@@ -52,20 +52,30 @@ DictionaryNode* LDC_DiccionaryList::search(string search) {
 void LDC_DiccionaryList::Delete(string word) {
 	DictionaryNode* actual = first;
 	DictionaryNode* ant = NULL;
-	if (!IsEmpty)
+	if (!IsEmpty())
 	{
-		string temp = actual->word;
-		Convert(word);
-		Convert(temp);
 		do
 		{
+			string temp = actual->word;
+			Convert(word);
+			Convert(temp);
+
 			if (temp == word)
 			{
 				if (actual == first)
 				{
-					first = first->next;
-					first->ant = last;
-					last->next = first;
+					if (actual->next == actual)
+					{
+						first = last = actual = NULL;
+						break;
+					}
+					else
+					{
+						first = first->next;
+						first->ant = last;
+						last->next = first;
+					}
+					
 				}
 				else if (actual == last)
 				{
@@ -78,10 +88,15 @@ void LDC_DiccionaryList::Delete(string word) {
 					ant->next = actual->next;
 					actual->next->ant = ant;
 				}
+				break;
 			}
-			ant = actual;
-			actual = actual->next;
+			else
+			{
+				ant = actual;
+				actual = actual->next;
 
+			}
+			
 		} while (actual != first);
 	}
 }
@@ -90,9 +105,9 @@ bool LDC_DiccionaryList::IsEmpty() {
 	return first == NULL;
 }
 void LDC_DiccionaryList::Print() {
-
+	string name = "Diccionario de juego";
 	string archivoCabeza = "digraph G {rankdir=LR\n"
-		"node[shape = box];\n";
+		"graph[label=\"" + name + "\", labelloc=t, fontsize=20]\nnode[shape = box];\n";
 
 	string nodos;
 	string juntarNodos;

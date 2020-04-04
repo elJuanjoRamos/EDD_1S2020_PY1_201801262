@@ -1,73 +1,13 @@
 digraph Sparce_Matrix { 
- node [shape=box]
-	Mt[ label = "Matrix", width = 1.5, style = filled, fillcolor = firebrick1, group = 1 ];
+ node [shape=box, style = "rounded,filled", fillcolor = bisque1]
+	Mt[ label = "Matrix", width = 1.5, style = "rounded,filled", fillcolor = firebrick1, group = 1 ];
 	e0[ shape = point, width = 0 ];
 e1[shape = point, width = 0];
-Nodox2 [label = "X=0" width = 1.5 style = filled, fillcolor = lightskyblue, group =2];
-Nodox5 [label = "X=1" width = 1.5 style = filled, fillcolor = lightskyblue, group =5];
-Nodox7 [label = "X=2" width = 1.5 style = filled, fillcolor = lightskyblue, group =7];
-Nodox9 [label = "X=3" width = 1.5 style = filled, fillcolor = lightskyblue, group =9];
-Nodox11 [label = "X=4" width = 1.5 style = filled, fillcolor = lightskyblue, group =11];
-Nodox13 [label = "X=6"width = 1.5 style = filled, fillcolor = lightskyblue, group =13];
-Nodoy3->Nodoy4[constraint=false, dir=both];
-Nodoy4->Nodoy6[constraint=false, dir=both];
-Nodoy6->Nodoy8[constraint=false, dir=both];
-Nodoy8->Nodoy10[constraint=false, dir=both];
-Nodoy10->Nodoy12[constraint=false, dir=both];
-Nodoy14->Nodoy15[constraint=false, dir=both];
-Nodoy16->Nodoy17[constraint=false, dir=both];
-Nodoy18->Nodoy19[constraint=false, dir=both];
-Nodoy20->Nodoy21[constraint=false, dir=both];
-Nodoy22->Nodoy23[constraint=false, dir=both];
-Nodoy3 [label = "Y=0" width = 1.5 style = filled, fillcolor = bisque1, group = 1  ];
-Nodoy14 [label = "Y=3" width = 1.5 style = filled, fillcolor = bisque1, group = 1  ];
-Nodoy16 [label = "Y=4" width = 1.5 style = filled, fillcolor = bisque1, group = 1  ];
-Nodoy18 [label = "Y=5" width = 1.5 style = filled, fillcolor = bisque1, group = 1  ];
-Nodoy20 [label = "Y=6" width = 1.5 style = filled, fillcolor = bisque1, group = 1  ];
-Nodoy22 [label = "Y=7"width = 1.5 style = filled, fillcolor = bisque1, group = 1  ];
-Nodox2->Nodoy4[dir=both]
-Nodox5->Nodoy6[dir=both]
-Nodox7->Nodoy8[dir=both]
-Nodox9->Nodoy10[dir=both]
-Nodox11->Nodoy12[dir=both]
-Nodox13->Nodoy15[dir=both]
-Nodoy15->Nodoy17[dir=both];
-Nodoy17->Nodoy19[dir=both];
-Nodoy19->Nodoy21[dir=both];
-Nodoy21->Nodoy23[dir=both];
+Nodox2 [label = "X=0"width = 1.5 style = "rounded,filled", fillcolor = lightskyblue, group =2];
+Nodoy3 [label = "Y=0"width = 1.5 style = "rounded,filled", fillcolor = darkseagreen1, group = 1  ];
 Mt->Nodox2;
-Nodox2->Nodox5[dir=both];
-Nodox5->Nodox7[dir=both];
-Nodox7->Nodox9[dir=both];
-Nodox9->Nodox11[dir=both];
-Nodox11->Nodox13[dir=both];
 Mt->Nodoy3[dir=both];
-Nodoy3->Nodoy14[dir=both];
-Nodoy14->Nodoy16[dir=both];
-Nodoy16->Nodoy18[dir=both];
-Nodoy18->Nodoy20[dir=both];
-Nodoy20->Nodoy22[dir=both];
- { rank = same; Mt; Nodox2; Nodox5; Nodox7; Nodox9; Nodox11; Nodox13}
+ { rank = same; Mt; Nodox2}
 Nodoy3[label = "Y=0" width = 1.5, group = 1];
-Nodoy4[label = "M" width = 1.5, group = 2];
-Nodoy6[label = "U\n doble" width = 1.5, group = 5];
-Nodoy8[label = "N" width = 1.5, group = 7];
-Nodoy10[label = "D" width = 1.5, group = 9];
-Nodoy12[label = "O" width = 1.5, group = 11];
-Nodoy14[label = "Y=3" width = 1.5, group = 1];
-Nodoy15[label = "M" width = 1.5, group = 13];
-Nodoy16[label = "Y=4" width = 1.5, group = 1];
-Nodoy17[label = "U" width = 1.5, group = 13];
-Nodoy18[label = "Y=5" width = 1.5, group = 1];
-Nodoy19[label = "N" width = 1.5, group = 13];
-Nodoy20[label = "Y=6" width = 1.5, group = 1];
-Nodoy21[label = "D" width = 1.5, group = 13];
-Nodoy22[label = "Y=7" width = 1.5, group = 1];
-Nodoy23[label = "O" width = 1.5, group = 13];
-{rank= same; Nodoy3;Nodoy4;Nodoy6;Nodoy8;Nodoy10;Nodoy12}
- {rank=same;Nodoy14;Nodoy15}
- {rank=same;Nodoy16;Nodoy17}
- {rank=same;Nodoy18;Nodoy19}
- {rank=same;Nodoy20;Nodoy21}
- {rank=same;Nodoy22;Nodoy23}
+{rank= same; Nodoy3}
 }

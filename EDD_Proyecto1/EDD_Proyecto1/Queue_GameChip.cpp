@@ -66,8 +66,9 @@ bool Queue_GameChip::IsEmpty() const
 //Print: Imprime las letras
 void Queue_GameChip::Print() {
 
-	string archivoCabeza = "digraph G {rankdir=LR;"
-		"node[shape = box];\n";
+	string name = "Fichas de Juego";
+	string archivoCabeza = "digraph G {rankdir=LR\n"
+		"graph[label=\"" + name + "\", labelloc=t, fontsize=20]\nnode[shape = box];\n";
 
 	string nodos;
 	string juntarNodos;
@@ -81,10 +82,10 @@ void Queue_GameChip::Print() {
 	while (aux != NULL)
 	{
 		if (aux->letter == "Ñ") {
-			nodos = nodos + "Nodo" + to_string(contador) + " [label = " + '"' + "Letter: Ñ" + string("\\lPoints:") + to_string(aux->points) + string("\\lCant:") + to_string(aux->cant) + '"' + "];\n";
+			nodos = nodos + "Nodo" + to_string(contador) + " [label = " + '"' + "Letra: Ñ" + string("\\lPuntos:") + to_string(aux->points) + '"' + "];\n";
 		}
 		else {
-			nodos = nodos + "Nodo" + to_string(contador) + " [label = " + '"' + "Letter:" + aux->letter + string("\\lPoints:") + to_string(aux->points) + string("\\lCant:") + to_string(aux->cant) + '"' + "];\n";
+			nodos = nodos + "Nodo" + to_string(contador) + " [label = " + '"' + "Letra:" + aux->letter + string("\\lPuntos:") + to_string(aux->points) + '"' + "];\n";
 		}
 
 		aux = aux->next;

@@ -1,3 +1,0 @@
-digraph G {rankdir=LR;node[shape = box];
-Nodo0 [label = " Jugador: Juan\lPuntos: 8"];
-}
